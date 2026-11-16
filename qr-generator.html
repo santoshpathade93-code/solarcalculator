@@ -1,138 +1,207 @@
+
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced QR Code Generator - ToolSub24</title>
-    <!-- QRCode.js Library from CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
-        .header { background: #0f172a; color: white; padding: 20px; text-align: center; }
-        .header a { color: #f97316; text-decoration: none; font-size: 14px; font-weight: 600; }
-        .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
-        .card { background: #ffffff; border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; margin-bottom: 20px; }
-        h1 { font-size: 24px; color: #0f172a; margin-bottom: 15px; text-align: center; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-weight: 600; margin-bottom: 8px; color: #334155; font-size: 14px; }
-        input, select, textarea { width: 100%; padding: 14px 16px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 15px; outline: none; background: #f8fafc; }
-        input:focus, select:focus, textarea:focus { border-color: #f97316; background: #fff; }
-        .btn { display: block; width: 100%; background: #0f172a; color: white; padding: 14px; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s; text-align: center; }
-        .btn:hover { background: #f97316; }
-        .result-box { text-align: center; margin-top: 20px; display: none; }
-        #qrcode { display: inline-block; padding: 15px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 15px; }
-        .download-btn { background: #16a34a; display: inline-block; padding: 10px 20px; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
-        .download-btn:hover { background: #15803d; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My AI Search</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #202124;
+}
+
+.top {
+    text-align: right;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.top a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.main {
+    text-align: center;
+    margin-top: 100px;
+    padding: 15px;
+}
+
+.logo {
+    font-size: 55px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.logo span:nth-child(1) { color: #4285f4; }
+.logo span:nth-child(2) { color: #ea4335; }
+.logo span:nth-child(3) { color: #fbbc05; }
+.logo span:nth-child(4) { color: #4285f4; }
+.logo span:nth-child(5) { color: #34a853; }
+.logo span:nth-child(6) { color: #ea4335; }
+
+.search {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    border: 1px solid #dfe1e5;
+    border-radius: 30px;
+    padding: 10px 18px;
+    box-shadow: 0 1px 5px #ddd;
+}
+
+.search:hover {
+    box-shadow: 0 2px 8px #ccc;
+}
+
+.search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    padding: 8px;
+    min-width: 0;
+}
+
+.search button {
+    border: none;
+    background: #4285f4;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 22px;
+    cursor: pointer;
+}
+
+.buttons {
+    margin-top: 25px;
+}
+
+.buttons button {
+    background: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    padding: 12px 18px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    border: 1px solid #dadce0;
+}
+
+#result {
+    max-width: 700px;
+    margin: 35px auto;
+    padding: 20px;
+    text-align: left;
+    white-space: pre-wrap;
+    line-height: 1.7;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #f2f2f2;
+    padding: 15px;
+    color: #666;
+    font-size: 13px;
+}
+
+@media(max-width:600px) {
+    .main {
+        margin-top: 90px;
+    }
+
+    .logo {
+        font-size: 43px;
+    }
+
+    .search {
+        padding: 8px;
+    }
+
+    .search input {
+        font-size: 15px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="header">
-        <a href="index.html">← Back to ToolSub24 Home</a>
+<div class="top">
+    <a href="#">About</a>
+    <a href="#">AI</a>
+</div>
+
+<div class="main">
+
+    <div class="logo">
+        <span>M</span><span>y</span><span>A</span><span>I</span><span> </span><span>+</span>
     </div>
 
-    <div class="container">
-        <div class="card">
-            <h1>Create Your QR Code in Seconds!</h1>
-            
-            <div class="form-group">
-                <label for="qrType">Select QR Type:</label>
-                <select id="qrType" onchange="updateInputPlaceholder()">
-                    <option value="url">Website URL / Link</option>
-                    <option value="text">Plain Text / Message</option>
-                    <option value="phone">Phone Number / Call</option>
-                    <option value="email">Email Address</option>
-                </select>
-            </div>
+    <p>Ask anything. Discover more.</p>
 
-            <div class="form-group">
-                <label id="inputLabel" for="qrInput">Enter or paste URL</label>
-                <input type="text" id="qrInput" placeholder="https://website.com">
-            </div>
+    <div class="search">
+        <input id="question"
+        type="text"
+        placeholder="Ask your AI anything..."
+        onkeydown="if(event.key==='Enter')askAI()">
 
-            <button class="btn" onclick="generateQR()">Generate QR Code</button>
-
-            <div class="result-box" id="resultBox">
-                <div id="qrcode"></div>
-                <div>
-                    <button class="download-btn" onclick="downloadQR()">Download QR Code</button>
-                </div>
-            </div>
-        </div>
+        <button onclick="askAI()">Search</button>
     </div>
 
-    <script>
-        function updateInputPlaceholder() {
-            let type = document.getElementById('qrType').value;
-            let label = document.getElementById('inputLabel');
-            let input = document.getElementById('qrInput');
-            
-            if(type === 'url') {
-                label.innerText = "Enter or paste URL";
-                input.placeholder = "https://website.com";
-                input.type = "url";
-            } else if(type === 'text') {
-                label.innerText = "Enter your text or message";
-                input.placeholder = "Type any text here...";
-                input.type = "text";
-            } else if(type === 'phone') {
-                label.innerText = "Enter Phone Number";
-                input.placeholder = "+91 9876543210";
-                input.type = "tel";
-            } else if(type === 'email') {
-                label.innerText = "Enter Email Address";
-                input.placeholder = "name@example.com";
-                input.type = "email";
-            }
-        }
+    <div class="buttons">
+        <button onclick="askAI()">AI Search</button>
+        <button onclick="clearSearch()">Clear</button>
+    </div>
 
-        let qrcodeObj = null;
+</div>
 
-        function generateQR() {
-            let val = document.getElementById('qrInput').value.trim();
-            let qrContainer = document.getElementById('qrcode');
-            let resultBox = document.getElementById('resultBox');
+<div id="result"></div>
 
-            if(!val) {
-                alert("Krupaya mahiti (data) bhara!");
-                return;
-            }
+<div class="footer">
+    India | MyAI Search
+</div>
 
-            qrContainer.innerHTML = "";
-            resultBox.style.display = "block";
+<script>
+async function askAI() {
 
-            qrcodeObj = new QRCode(qrContainer, {
-                text: val,
-                width: 200,
-                height: 200,
-                colorDark : "#000000",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
-        }
+    let question = document.getElementById("question").value;
 
-        function downloadQR() {
-            let img = document.querySelector('#qrcode img');
-            if(!img) {
-                // sometimes canvas is used
-                let canvas = document.querySelector('#qrcode canvas');
-                if(canvas) {
-                    let imageURL = canvas.toDataURL("image/png");
-                    let a = document.createElement('a');
-                    a.href = imageURL;
-                    a.download = 'qrcode-toolsub24.png';
-                    a.click();
-                } else {
-                    alert("Aadhi QR code generate kara!");
-                }
-            } else {
-                let a = document.createElement('a');
-                a.href = img.src;
-                a.download = 'qrcode-toolsub24.png';
-                a.click();
-            }
-        }
-    </script>
+    if(!question.trim()) {
+        alert("Please enter your question");
+        return;
+    }
+
+    document.getElementById("result").innerText =
+    "AI is thinking...";
+
+    // येथे पुढे खरे AI API जोडायचे आहे
+
+    setTimeout(() => {
+        document.getElementById("result").innerText =
+        "Your question: " + question +
+        "\n\nAI API जोडल्यावर येथे खरे AI उत्तर दिसेल.";
+    }, 1000);
+}
+
+function clearSearch() {
+    document.getElementById("question").value = "";
+    document.getElementById("result").innerText = "";
+}
+</script>
+
 </body>
 </html>
