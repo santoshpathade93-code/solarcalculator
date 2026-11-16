@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VahanLog - Vehicle Service & Maintenance Tracker</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            padding: 15px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 26px;
+        }
+        p.subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #d35400;
+        }
+        .records-section {
+            margin-top: 30px;
+        }
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        .records-section h3 {
+            color: #2c3e50;
+        }
+        .search-box {
+            margin-bottom: 15px;
+        }
+        .record-card {
+            background: #fdfefe;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #e67e22;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .card-top h4 {
+            color: #2c3e50;
+            font-size: 16px;
+        }
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            width: auto;
+            margin-top: 0;
+        }
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+        .record-card p {
+            font-size: 13px;
+            color: #555;
+            margin: 4px 0;
+        }
+        .no-records {
+            text-align: center;
+            color: #95a5a6;
+            font-size: 14px;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="back-link">← होम पेजवर जा (Home)</a>
+    <h1>🚗 VahanLog</h1>
+    <p class="subtitle">तुमच्या गाडीची सर्व्हिसिंग आणि मेंटेनन्स हिस्ट्री सुरक्षित ठेवा</p>
+
+    <div class="form-group">
+        <label for="vehicleNo">गाडीचा नंबर (Vehicle Number):</label>
+        <input type="text" id="vehicleNo" placeholder="उदा. MH 31 AB 1234" style="text-transform: uppercase;">
+    </div>
+
+    <div class="form-group">
+        <label for="serviceType">कामाचा प्रकार (Service Type):</label>
+        <select id="serviceType">
+            <option value="Engine Oil Change">इंजिन ऑइल बदल (Engine Oil Change)</option>
+            <option value="General Service">साधारण सर्व्हिसिंग (General Service)</option>
+            <option value="Chain & Sprocket">चेन व स्प्राकेट (Chain & Sprocket)</option>
+            <option value="Brake Work">ब्रेक रिपेयरिंग (Brake Work)</option>
+            <option value="Tyre Replacement">टायर बदल (Tyre Replacement)</option>
+            <option value="Other Repairs">इतर कामे (Other Repairs)</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="kmReading">मीटर रीडिंग (KM Reading):</label>
+        <input type="number" id="kmReading" placeholder="उदा. 25400">
+    </div>
+
+    <div class="form-group">
+        <label for="serviceDate">तारीख (Date):</label>
+        <input type="date" id="serviceDate">
+    </div>
+
+    <div class="form-group">
+        <label for="notes">टीप / खर्च (Notes / Cost):</label>
+        <input type="text" id="notes" placeholder="उदा. खर्च ₹450, नवीन ऑइल टाकले">
+    </div>
+
+    <button onclick="saveRecord()">रेकॉर्ड सेव्ह करा</button>
+
+    <div class="records-section">
+        <div class="header-row">
+            <h3>जतन केलेले रेकॉर्ड्स</h3>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" id="searchVehicle" placeholder="🔍 गाडी नंबर टाकून शोधा (Search)..." onkeyup="loadRecords()">
+        </div>
+
+        <div id="recordsList">
+            <!-- JavaScript द्वारे रेकॉर्ड्स इथे लोड होतील -->
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('serviceDate').valueAsDate = new Date();
+
+    function loadRecords() {
+        let records = JSON.parse(localStorage.getItem('vahanLogRecords')) || [];
+        let listContainer = document.getElementById('recordsList');
+        let searchQuery = document.getElementById('searchVehicle').value.toUpperCase().trim();
+        
+        let filteredRecords = records.filter(rec => rec.vehicleNo.toUpperCase().includes(searchQuery));
+
+        if (filteredRecords.length === 0) {
+            listContainer.innerHTML = '<p class="no-records">कोणताही रेकॉर्ड सापडला नाही.</p>';
+            return;
+        }
+
+        let html = '';
+        filteredRecords.forEach((rec, index) => {
+            let originalIndex = records.indexOf(rec);
+            html += `
+                <div class="record-card">
+                    <div class="card-top">
+                        <h4>${rec.vehicleNo} - ${rec.serviceType}</h4>
+                        <button class="delete-btn" onclick="deleteRecord(${originalIndex})">डिलीट</button>
+                    </div>
+                    <p><strong>किलोमीटर (KM):</strong> ${rec.kmReading} KM</p>
+                    <p><strong>तारीख:</strong> ${rec.serviceDate}</p>
+                    <p><strong>टीप / खर्च:</strong> ${rec.notes || 'काही नाही'}</p>
+                </div>
+            `;
+        });
+        listContainer.innerHTML = html;
+    }
+
+    function saveRecord() {
+        let vehicleNo = document.getElementById('vehicleNo').value.trim().toUpperCase();
+        let serviceType = document.getElementById('serviceType').value;
+        let kmReading = document.getElementById('kmReading').value.trim();
+        let serviceDate = document.getElementById('serviceDate').value;
+        let notes = document.getElementById('notes').value.trim();
+
+        if (!vehicleNo || !kmReading) {
+            alert('कृपया गाडीचा नंबर आणि किलोमीटर (KM) भरा!');
+            return;
+        }
+
+        let newRecord = { vehicleNo, serviceType, kmReading, serviceDate, notes };
+
+        let records = JSON.parse(localStorage.getItem('vahanLogRecords')) || [];
+        records.unshift(newRecord);
+        localStorage.setItem('vahanLogRecords', JSON.stringify(records));
+
+        document.getElementById('vehicleNo').value = '';
+        document.getElementById('kmReading').value = '';
+        document.getElementById('notes').value = '';
+        document.getElementById('serviceDate').valueAsDate = new Date();
+
+        loadRecords();
+        alert('रेकॉर्ड यशस्वीरित्या सेव्ह झाला!');
+    }
+
+    function deleteRecord(index) {
+        if (confirm('तुम्हाला हा रेकॉर्ड डिलीट करायचा आहे का?')) {
+            let records = JSON.parse(localStorage.getItem('vahanLogRecords')) || [];
+            records.splice(index, 1);
+            localStorage.setItem('vahanLogRecords', JSON.stringify(records));
+            loadRecords();
+        }
+    }
+
+    window.onload = loadRecords;
+</script>
+
+</body>
+</html>
