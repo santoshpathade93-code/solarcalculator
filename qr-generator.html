@@ -1,175 +1,22 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html lang="mr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional QR Code Generator | ToolSub24</title>
-    <!-- Tailwind CSS for High-Level Professional Design -->
+    
+    <!-- SEO Meta Tags & Keywords for Google Ranking -->
+    <meta name="description" content="Generate high-resolution custom QR codes instantly with ToolSub24's professional QR Code Generator. Free online tool with instant PNG download.">
+    <meta name="keywords" content="vahanlog, toolsub24, toolsub 24, qr code generator, professional qr maker, free online tools, ai search tool, web utility tools, vehicle registration search, transport info tool, custom qr code, high resolution qr, online qr creator, developer utilities, github pages tools, fast web tools, free utility platform, maharashtra transport tool, vehicle details finder, instant qr code, text to qr, url qr code, phone qr code, email qr code, tailwind css tools, modern ui tools, web developer helper, santoshpathade93, toolsub directory, free online qr generator, dynamic qr code, static qr code, responsive web tools, high speed tools, internet utilities, digital tools platform, smart tools online, quick qr tool, advanced web utilities, mobile friendly tools, best free tools, top web tools, daily utility tools, essential web tools, secure qr generator, custom color qr, tech tools online, website optimization tools, search engine friendly tools, professional directory">
+    <meta name="author" content="ToolSub24">
+    <meta name="robots" content="index, follow">
+
+    <!-- Tailwind CSS for High-Level Professional UI -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- QRCode.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- QRious Library for generating QR code -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between font-sans">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between font-sans selection:bg-orange-500 selection:text-slate-950">
 
-    <!-- Header Navigation -->
-    <header class="w-full border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2 text-xl font-black tracking-wider text-orange-500">
-                <i class="fa-solid fa-cube"></i>
-                <span>ToolSub<span class="text-white">24</span></span>
-            </a>
-            <a href="index.html" class="text-sm font-semibold text-slate-400 hover:text-orange-400 transition">
-                <i class="fa-solid fa-arrow-left mr-1"></i> Back to Hub
-            </a>
-        </div>
-    </header>
-
-    <!-- Main Container -->
-    <main class="max-w-4xl mx-auto px-4 py-10 w-full flex-grow">
-        <div class="text-center mb-10">
-            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-3">
-                Professional <span class="text-orange-500">QR Generator</span>
-            </h1>
-            <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto">
-                Generate high-resolution dynamic and static QR codes for links, text, contacts, and custom branding instantly.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 bg-slate-900 border border-slate-800 p-6 md:p-8 rounded-2xl shadow-2xl">
-            
-            <!-- Left Panel: Inputs -->
-            <div class="md:col-span-7 space-y-6">
-                <div>
-                    <label class="block text-sm font-semibold text-slate-300 mb-2">Select Content Type</label>
-                    <select id="qrType" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:border-orange-500 transition">
-                        <option value="url">🌐 Website URL / Link</option>
-                        <option value="text">📝 Plain Text / Note</option>
-                        <option value="phone">📞 Phone Number</option>
-                        <option value="email">📧 Email Address</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label id="inputLabel" class="block text-sm font-semibold text-slate-300 mb-2">Enter Destination URL</label>
-                    <input type="text" id="qrInput" placeholder="https://example.com" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:border-orange-500 transition">
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-400 mb-1">QR Code Color</label>
-                        <input type="color" id="qrColorDark" value="#000000" class="w-full h-10 bg-slate-950 border border-slate-700 rounded-lg cursor-pointer p-1">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-400 mb-1">Background Color</label>
-                        <input type="color" id="qrColorLight" value="#ffffff" class="w-full h-10 bg-slate-950 border border-slate-700 rounded-lg cursor-pointer p-1">
-                    </div>
-                </div>
-
-                <button onclick="generateQRCode()" class="w-full bg-orange-500 hover:bg-orange-600 text-slate-950 font-bold py-3.5 px-6 rounded-xl shadow-lg transition transform active:scale-95 flex items-center justify-center space-x-2">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    <span>Generate High-Res QR</span>
-                </button>
-            </div>
-
-            <!-- Right Panel: Output & Preview -->
-            <div class="md:col-span-5 flex flex-col items-center justify-center bg-slate-950/60 border border-slate-800/80 p-6 rounded-xl text-center">
-                <div id="qrPlaceholder" class="text-slate-600 flex flex-col items-center justify-center space-y-2 py-12">
-                    <i class="fa-solid fa-qrcode text-5xl"></i>
-                    <p class="text-xs">Your QR code will appear here</p>
-                </div>
-
-                <div id="qrcode" class="p-3 bg-white rounded-xl shadow-inner hidden mb-4"></div>
-
-                <button id="downloadBtn" onclick="downloadQRCode()" class="hidden w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-2.5 px-4 rounded-xl transition text-sm flex items-center justify-center space-x-2">
-                    <i class="fa-solid fa-download"></i>
-                    <span>Download PNG</span>
-                </button>
-            </div>
-
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="border-t border-slate-800 py-6 text-center text-slate-500 text-xs">
-        <p>&copy; 2026 ToolSub24. All rights reserved. Built for professional utilities.</p>
-    </footer>
-
-    <!-- Script Logic -->
-    <script>
-        let qrcodeInstance = null;
-
-        document.getElementById('qrType').addEventListener('change', function() {
-            let type = this.value;
-            let label = document.getElementById('inputLabel');
-            let input = document.getElementById('qrInput');
-
-            if(type === 'url') {
-                label.innerText = "Enter Destination URL";
-                input.placeholder = "https://example.com";
-            } else if(type === 'text') {
-                label.innerText = "Enter Plain Text";
-                input.placeholder = "Write your message here...";
-            } else if(type === 'phone') {
-                label.innerText = "Enter Phone Number";
-                input.placeholder = "+91 9876543210";
-            } else if(type === 'email') {
-                label.innerText = "Enter Email Address";
-                input.placeholder = "contact@example.com";
-            }
-        });
-
-        function generateQRCode() {
-            let text = document.getElementById('qrInput').value.trim();
-            let darkColor = document.getElementById('qrColorDark').value;
-            let lightColor = document.getElementById('qrColorLight').value;
-            let qrContainer = document.getElementById('qrcode');
-            let placeholder = document.getElementById('qrPlaceholder');
-            let downloadBtn = document.getElementById('downloadBtn');
-
-            if(!text) {
-                alert("Krupaya mahiti (data) bhara!");
-                return;
-            }
-
-            qrContainer.innerHTML = "";
-            placeholder.classList.add('hidden');
-            qrContainer.classList.remove('hidden');
-
-            // Generate using qrcode.js library
-            qrcodeInstance = new QRCode(qrContainer, {
-                text: text,
-                width: 220,
-                height: 220,
-                colorDark: darkColor,
-                colorLight: lightColor,
-                correctLevel: QRCode.CorrectLevel.H
-            });
-
-            downloadBtn.classList.remove('hidden');
-        }
-
-        function downloadQRCode() {
-            let canvas = document.querySelector('#qrcode canvas');
-            let img = document.querySelector('#qrcode img');
-            let imageUrl = "";
-
-            if(canvas) {
-                imageUrl = canvas.toDataURL("image/png");
-            } else if(img) {
-                imageUrl = img.src;
-            }
-
-            if(imageUrl) {
-                let link = document.createElement('a');
-                link.href = imageUrl;
-                link.download = 'toolsub24-pro-qr.png';
-                link.click();
-            } else {
-                alert("Aadhi QR code generate kara!");
-            }
-        }
-    </script>
-</body>
-</html>
