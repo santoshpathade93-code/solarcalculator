@@ -1,92 +1,126 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html lang="mr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolSub24 - Free AI Tools & Online Utility Directory</title>
-    <meta name="description" content="ToolSub24 provides 50+ free AI tools, utility calculators, image editors, and productivity tools online.">
-    <meta name="google-site-verification" content="2Kb5-_5xxYngM6HFfxAzOktu6MxBDiQZTixLXa91ZCE" />
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
-        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; padding: 50px 20px; text-align: center; border-bottom: 4px solid #f97316; }
-        .hero h1 { font-size: 32px; margin-bottom: 10px; font-weight: 800; }
-        .hero h1 span { color: #f97316; }
-        .hero p { color: #94a3b8; font-size: 15px; margin-bottom: 25px; }
-        .search-container { max-width: 600px; margin: 0 auto; position: relative; }
-        .search-container input { width: 100%; padding: 16px 20px 16px 50px; border: none; border-radius: 40px; font-size: 16px; outline: none; background: #ffffff; box-shadow: 0 8px 25px rgba(0,0,0,0.2); color: #0f172a; }
-        .search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); font-size: 18px; color: #64748b; }
-        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
-        .section-title { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 20px; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .tool-card { background: #ffffff; border-radius: 16px; padding: 24px; text-decoration: none; color: inherit; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
-        .tool-card:hover { transform: translateY(-5px); border-color: #f97316; }
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .card-icon { font-size: 36px; }
-        .badge { background: #ffedd5; color: #c2410c; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
-        .badge-new { background: #dcfce7; color: #166534; }
-        .tool-card h3 { font-size: 18px; color: #0f172a; margin-bottom: 8px; }
-        .tool-card p { font-size: 13px; color: #64748b; margin-bottom: 15px; }
-        .card-footer-link { font-size: 13px; font-weight: 600; color: #f97316; }
-        footer { text-align: center; margin-top: 60px; padding: 30px; background: #ffffff; color: #64748b; font-size: 13px; border-top: 1px solid #e2e8f0; }
-    </style>
+    <title>ToolSub24 - Professional Free Web Utilities & Tools</title>
+    
+    <!-- SEO Meta Tags & Keywords for Google Ranking -->
+    <meta name="description" content="ToolSub24 is your ultimate destination for high-performance professional utilities, VahanLog vehicle tracking, advanced QR code generator, AI search tools, and free web developer tools.">
+    <meta name="keywords" content="vahanlog, toolsub24, toolsub 24, qr code generator, professional qr maker, free online tools, ai search tool, web utility tools, vehicle registration search, transport info tool, custom qr code, high resolution qr, online qr creator, developer utilities, github pages tools, fast web tools, free utility platform, maharashtra transport tool, vehicle details finder, instant qr code, text to qr, url qr code, phone qr code, email qr code, tailwind css tools, modern ui tools, web developer helper, santoshpathade93, toolsub directory, free online qr generator, dynamic qr code, static qr code, responsive web tools, high speed tools, internet utilities, digital tools platform, smart tools online, quick qr tool, advanced web utilities, mobile friendly tools, best free tools, top web tools, daily utility tools, essential web tools, secure qr generator, custom color qr, tech tools online, website optimization tools, search engine friendly tools, professional directory">
+    <meta name="author" content="ToolSub24">
+    <meta name="robots" content="index, follow">
+
+    <!-- Tailwind CSS for High-Level Professional UI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between font-sans selection:bg-orange-500 selection:text-slate-950">
 
-    <div class="hero">
-        <h1>Tool<span>Sub24</span> Directory</h1>
-        <p>Free AI Tools, Smart Calculators, and Online Utilities in One Place.</p>
-        <div class="search-container">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="homeSearch" placeholder="Search any tool..." onkeyup="filterTools()">
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="section-title">🚀 Featured Tools</div>
-        
-        <div class="tools-grid" id="toolsGrid">
-            <!-- VahanLog Tool -->
-            <a href="vahanlog.html" class="tool-card" data-name="vahanlog vehicle maintenance">
-                <div>
-                    <div class="card-header">
-                        <div class="card-icon">🚗</div>
-                        <span class="badge">Popular</span>
-                    </div>
-                    <h3>VahanLog</h3>
-                    <p>गाडीची सर्व्हिसिंग, खर्च आणि मेंटेनन्स हिस्ट्री सुरक्षित ठेवा.</p>
-                </div>
-                <div class="card-footer-link">Use Tool →</div>
+    <!-- Header Navigation -->
+    <header class="w-full border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 text-2xl font-black tracking-wider text-orange-500">
+                <i class="fa-solid fa-cube"></i>
+                <span>ToolSub<span class="text-white">24</span></span>
             </a>
-
-            <!-- QR Code Generator -->
-            <a href="qr-generator.html" class="tool-card" data-name="qr code generator utility">
-                <div>
-                    <div class="card-header">
-                        <div class="card-icon">📱</div>
-                        <span class="badge badge-new">Utility</span>
-                    </div>
-                    <h3>QR Code Generator</h3>
-                    <p>कोणत्याही मजकुराचा किंवा लिंकरचा झटपट QR कोड बनवा.</p>
-                </div>
-                <div class="card-footer-link">Use Tool →</div>
-            </a>
+            <nav class="hidden md:flex space-x-6 text-sm font-semibold text-slate-300">
+                <a href="index.html" class="hover:text-orange-400 transition">Home</a>
+                <a href="#tools" class="hover:text-orange-400 transition">Tools Directory</a>
+                <a href="qr-generator.html" class="hover:text-orange-400 transition">QR Generator</a>
+            </nav>
+            <div class="text-xs bg-orange-500/10 border border-orange-500/30 text-orange-400 px-3 py-1.5 rounded-full font-medium">
+                <i class="fa-solid fa-bolt mr-1"></i> Pro Hub v2.4
+            </div>
         </div>
-    </div>
+    </header>
 
-    <footer>
-        <p>&copy; 2026 ToolSub24.in — All Rights Reserved.</p>
+    <!-- Hero Section -->
+    <main class="flex-grow">
+        <section class="max-w-5xl mx-auto px-4 py-16 md:py-24 text-center">
+            <div class="inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 px-4 py-2 rounded-full text-xs text-orange-400 mb-6 shadow-inner">
+                <i class="fa-solid fa-star"></i>
+                <span>High-Performance Professional Utilities</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+                Welcome to <span class="text-orange-500">ToolSub24</span> Directory
+            </h1>
+            <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                Your ultimate platform for high-speed digital utilities, including VahanLog, professional QR Code generators, and advanced web developer tools.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#tools" class="bg-orange-500 hover:bg-orange-600 text-slate-950 font-bold py-3.5 px-8 rounded-xl shadow-lg transition transform active:scale-95 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-toolbox"></i>
+                    <span>Explore Tools</span>
+                </a>
+                <a href="qr-generator.html" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold py-3.5 px-8 rounded-xl transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-qrcode text-orange-400"></i>
+                    <span>Open QR Generator</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Tools Grid Section -->
+        <section id="tools" class="max-w-6xl mx-auto px-4 py-12 border-t border-slate-900">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold tracking-tight text-white flex items-center space-x-2">
+                    <i class="fa-solid fa-layer-group text-orange-500"></i>
+                    <span>Available Professional Tools</span>
+                </h2>
+                <span class="text-xs text-slate-500">Updated Daily</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Tool 1: QR Generator -->
+                <div class="bg-slate-900 border border-slate-800 hover:border-orange-500/50 p-6 rounded-2xl transition shadow-xl flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 bg-orange-500/10 border border-orange-500/20 rounded-xl flex items-center justify-center text-orange-500 text-xl mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-qrcode"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">QR Code Generator</h3>
+                        <p class="text-slate-400 text-sm mb-6">
+                            Generate high-resolution dynamic and static QR codes instantly with custom colors and instant PNG download.
+                        </p>
+                    </div>
+                    <a href="qr-generator.html" class="w-full bg-slate-950 hover:bg-orange-500 hover:text-slate-950 border border-slate-700 hover:border-orange-500 text-slate-200 font-semibold py-2.5 px-4 rounded-xl transition text-center text-sm flex items-center justify-center space-x-2">
+                        <span>Launch Tool</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Tool 2: VahanLog (Upcoming) -->
+                <div class="bg-slate-900 border border-slate-800 hover:border-orange-500/50 p-6 rounded-2xl transition shadow-xl flex flex-col justify-between group opacity-9ch">
+                    <div>
+                        <div class="w-12 h-12 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 text-xl mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-car"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">VahanLog Vehicle Tool</h3>
+                        <p class="text-slate-400 text-sm mb-6">
+                            Professional transport and vehicle information helper built for fast tracking and lookup assistance.
+                        </p>
+                    </div>
+                    <span class="w-full bg-slate-950 border border-slate-800 text-slate-500 font-semibold py-2.5 px-4 rounded-xl text-center text-sm cursor-not-allowed">
+                        Coming Soon
+                    </span>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-8 text-center text-slate-500 text-xs">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p>&copy; 2026 ToolSub24. All rights reserved. Built for professional performance.</p>
+            <div class="flex space-x-4">
+                <a href="index.html" class="hover:text-orange-400 transition">Privacy</a>
+                <a href="index.html" class="hover:text-orange-400 transition">Terms</a>
+                <a href="index.html" class="hover:text-orange-400 transition">Contact</a>
+            </div>
+        </div>
     </footer>
 
-    <script>
-        function filterTools() {
-            let input = document.getElementById('homeSearch').value.toLowerCase();
-            let cards = document.querySelectorAll('.tool-card');
-            cards.forEach(card => {
-                let name = card.getAttribute('data-name');
-                card.style.display = name.includes(input) ? "flex" : "none";
-            });
-        }
-    </script>
 </body>
 </html>
