@@ -5,37 +5,212 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToolSub24 - Free Online Utility Tools</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        body { background-color: #f4f6f9; color: #333; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 30px; padding: 20px 0; }
-        header h1 { color: #2c3e50; font-size: 32px; margin-bottom: 8px; }
-        header p { color: #7f8c8d; font-size: 16px; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .tool-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; color: inherit; display: block; }
-        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-        .card-icon { font-size: 36px; margin-bottom: 12px; }
-        .tool-card h3 { color: #2c3e50; font-size: 18px; margin-bottom: 8px; }
-        .tool-card p { color: #666; font-size: 14px; line-height: 1.4; }
-        footer { text-align: center; margin-top: 40px; color: #95a5a6; font-size: 13px; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            padding: 0;
+        }
+        .hero {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            padding: 40px 20px 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .hero h1 {
+            font-size: 28px;
+            color: #0f172a;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        .hero h1 span {
+            background: linear-gradient(90deg, #f97316, #ea580c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        /* Search Box Design */
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .search-container input {
+            width: 100%;
+            padding: 14px 20px 14px 45px;
+            border: 2px solid #e2e8f0;
+            border-radius: 30px;
+            font-size: 15px;
+            outline: none;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: all 0.3s;
+        }
+        .search-container input:focus {
+            border-color: #f97316;
+            box-shadow: 0 4px 15px rgba(249,115,22,0.15);
+        }
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #94a3b8;
+        }
+
+        /* Container for Cards */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 15px;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        
+        /* Colorful Cards (TinyWow Style) */
+        .tool-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #f1f5f9;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        
+        /* Card Accents */
+        .tool-card.orange {
+            border-top: 5px solid #f97316;
+        }
+        .tool-card.blue {
+            border-top: 5px solid #3b82f6;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .card-icon {
+            font-size: 32px;
+        }
+        .badge {
+            background: #ffedd5;
+            color: #c2410c;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .tool-card h3 {
+            font-size: 18px;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+        .tool-card p {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #94a3b8;
+            font-size: 13px;
+            border-top: 1px solid #e2e8f0;
+        }
     </style>
 </head>
 <body>
-<div class="container">
-    <header>
-        <h1>🛠️ ToolSub24</h1>
-        <p>तुमच्या दैनंदिन गरजांसाठी सोपे आणि मोफत ऑनलाईन टूल्स</p>
-    </header>
-    <div class="tools-grid">
-        <a href="vahanlog.html" class="tool-card">
-            <div class="card-icon">🚗</div>
-            <h3>VahanLog</h3>
-            <p>गाडीची सर्व्हिसिंग, किलोमीटर रीडिंग आणि मेंटेनन्सचा खर्च सुरक्षित ठेवा.</p>
-        </a>
+
+    <!-- Hero Section (TinyWow Style) -->
+    <div class="hero">
+        <h1>Tool<span>Sub24</span></h1>
+        <p>तुमच्या दैनंदिन कामांसाठी सोपी, जलद आणि मोफत ऑनलाईन युटिलिटी टूल्स</p>
+        
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="homeSearch" placeholder="कोणते टूल हवे आहे ते शोधा..." onkeyup="filterTools()">
+        </div>
     </div>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        <div class="section-title">सर्व उपलब्ध टूल्स (All Tools)</div>
+        
+        <div class="tools-grid" id="toolsGrid">
+            <!-- VahanLog Card -->
+            <a href="vahanlog.html" class="tool-card orange" data-name="vahanlog vahan servicing vehicle maintenance">
+                <div class="card-header">
+                    <div class="card-icon">🚗</div>
+                    <span class="badge">Popular</span>
+                </div>
+                <h3>VahanLog</h3>
+                <p>गाडीची सर्व्हिसिंग, किलोमीटर रीडिंग, खर्च आणि मेंटेनन्स हिस्ट्री सुरक्षित ठेवा.</p>
+            </a>
+
+            <!-- Upcoming Tool Card -->
+            <a href="#" class="tool-card blue" data-name="solar calculator coming soon" style="opacity: 0.7;">
+                <div class="card-header">
+                    <div class="card-icon">☀️</div>
+                    <span class="badge" style="background: #dbeafe; color: #1d4ed8;">Upcoming</span>
+                </div>
+                <h3>सोलर कॅल्क्युलेटर</h3>
+                <p>लवकरच येत आहे नवीन सोलर सिस्टम आणि लोड कॅल्क्युलेट करण्याचे टूल.</p>
+            </a>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2026 ToolSub24. All Rights Reserved.</p>
     </footer>
-</div>
+
+    <script>
+        // Live Search Filter for Tools
+        function filterTools() {
+            let input = document.getElementById('homeSearch').value.toLowerCase();
+            let cards = document.querySelectorAll('.tool-card');
+
+            cards.forEach(card => {
+                let name = card.getAttribute('data-name');
+                if (name.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>
