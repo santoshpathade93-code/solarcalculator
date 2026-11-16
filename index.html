@@ -1,76 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram Comment Downloader - Free Online Tool</title>
-    <meta name="description" content="Download Instagram comments easily and for free with our fast online Instagram comment downloader tool.">
-    <meta name="google-site-verification" content="2Kb5-_5xxYngM6HFfxAzOktu6MxBDiQZTixLXa91ZCE">
+    <title>VahanLog - Vehicle Service & Maintenance Tracker</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7f6;
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            padding: 15px;
         }
         .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 400px;
-            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         h1 {
-            color: #333;
-            font-size: 22px;
-            margin-bottom: 15px;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 26px;
         }
-        input[type="text"] {
+        p.subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+        input, select {
             width: 100%;
             padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
         }
         button {
-            background-color: #E1306C;
+            width: 100%;
+            padding: 12px;
+            background-color: #e67e22;
             color: white;
             border: none;
-            padding: 10px 15px;
-            width: 100%;
-            border-radius: 5px;
+            border-radius: 6px;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
         }
         button:hover {
-            background-color: #C13584;
+            background-color: #d35400;
+        }
+        .records-section {
+            margin-top: 30px;
+        }
+        .records-section h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        .record-card {
+            background: #fdfefe;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #e67e22;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .record-card h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .record-card p {
+            font-size: 13px;
+            color: #555;
+            margin: 3px 0;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+        .no-records {
+            text-align: center;
+            color: #95a5a6;
+            font-size: 14px;
+            padding: 15px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Instagram Comment Downloader</h1>
-        <p>Enter your Instagram Post URL below:</p>
-        <input type="text" id="postUrl" placeholder="https://www.instagram.com/p/...">
-        <button onclick="downloadComments()">Download Comments</button>
+
+<div class="container">
+    <h1>🚗 VahanLog</h1>
+    <p class="subtitle">तुमच्या गाडीची सर्व्हिसिंग आणि मेंटेनन्स हिस्ट्री सुरक्षित ठेवा</p>
+
+    <div class="form-group">
+        <label for="vehicleNo">गाडीचा नंबर (Vehicle Number):</label>
+        <input type="text" id="vehicleNo" placeholder="उदा. MH 31 AB 1234">
     </div>
 
-    <script>
-        function downloadComments() {
-            const url = document.getElementById('postUrl').value;
-            if(!url) {
-                alert('Please enter a valid Instagram post URL!');
-                return;
-            }
-            alert('Processing your request for: ' + url);
+    <div class="form-group">
+        <label for="serviceType">कामाचा प्रकार (Service Type):</label>
+        <select id="serviceType">
+            <option value="Engine Oil Change">इंजिन ऑइल बदल (Engine Oil Change)</option>
+            <option value="General Service">साधारण सर्व्हिसिंग (General Service)</option>
+            <option value="Chain & Sprocket">चेन व स्प्राकेट (Chain & Sprocket)</option>
+            <option value="Brake Work">ब्रेक रिपेयरिंग (Brake Work)</option>
+            <option value="Tyre Replacement">टायर बदल (Tyre Replacement)</option>
+            <option value="Other Repairs">इतर कामे (Other Repairs)</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="kmReading">मीटर रीडिंग (KM Reading):</label>
+        <input type="number" id="kmReading" placeholder="उदा. 25400">
+    </div>
+
+    <div class="form-group">
+        <label for="serviceDate">तारीख (Date):</label>
+        <input type="date" id="serviceDate">
+    </div>
+
+    <div class="form-group">
+        <label for="notes">टीप / खर्च (Notes / Cost):</label>
+        <input type="text" id="notes" placeholder="उदा. खर्च ₹450, नवीन ऑइल टाकले">
+    </div>
+
+    <button onclick="saveRecord()">रेकॉर्ड सेव्ह करा</button>
+
+    <div class="records-section">
+        <h3>जतन केलेले रेकॉर्ड्स (Saved Records)</h3>
+        <div id="recordsList">
+            <!-- JavaScript द्वारे रेकॉर्ड्स इथे लोड होतील -->
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('serviceDate').valueAsDate = new Date();
+
+    function loadRecords() {
+        let records = JSON.parse(localStorage.getItem('vahanLogRecords')) || [];
+        let listContainer = document.getElementById('recordsList');
+        
+        if (records.length === 0) {
+            listContainer.innerHTML = '<p class="no-records">कोणताही रेकॉर्ड सापडला नाही.</p>';
+            return;
         }
-    </script>
+
+        let html = '';
+        records.forEach((rec, index) => {
+            html += `
+                <div class="record-card">
+                    <button class="delete-btn" onclick="deleteRecord(${index})">डिलीट</button>
+                    <h4>${rec.vehicleNo} - ${rec.serviceType}</h4>
+                    <p><strong>किलोमीटर (KM):</strong> ${rec.kmReading} KM</p>
+                    <p><strong>तारीख:</strong> ${rec.serviceDate}</p>
+                    <p><strong>टीप:</strong> ${rec.notes || 'काही नाही'}</p>
+                </div>
+            `;
+        });
+        listContainer.innerHTML = html;
+    }
+
+    function saveRecord() {
+        let vehicleNo = document.getElementById('vehicleNo').value.trim();
+        let serviceType = document.getElementById('serviceType').value;
+        let kmReading = document.getElementById('kmReading').value.trim();
+        let serviceDate = document.getElementById('serviceDate').value;
+        let notes = document.getElementById('notes').value.trim();
+
+        if (!vehicleNo || !kmReading) {
+            alert('कृपया गाडीचा नंबर आणि किलोमीटर (KM) भरा!');
+            return;
+        }
+
+        let newRecord = { vehicleNo, serviceType, kmReading, serviceDate, notes };
+
+        let records = JSON.parse(localStorage.getItem('vahanLogRecords')) || [];
+        records.unshift(newRecord);
+        localStorage.setItem('vahanLogRecords', JSON.stringify(records));
+
+        document.getElementById('vehicleNo').value = '';
+        document.getElementById('kmReading').value = '';
+        document.getElementById('notes').value = '';
+        document.getElementById('serviceDate').valueAsDate = new Date();
+
+        loadRecords();
+        alert('रेकॉर्ड यशस्वीरित्या सेव्ह झाला!');
+    }
+
+    function deleteRecord(index) {
+        if (confirm('तुम्हाला हा रेकॉर्ड डिलीट करायचा आहे का?')) {
+            let records = JSON.parse(localStorage.getItem('vahanLogRecords')) || [];
+            records.splice(index, 1);
+            localStorage.setItem('vahanLogRecords', JSON.stringify(records));
+            loadRecords();
+        }
+    }
+
+    window.onload = loadRecords;
+</script>
+
 </body>
 </html>
