@@ -1,159 +1,137 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html lang="mr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolSub24 - Professional Web Utilities & Tools Directory</title>
+    <title>ToolSub24 - Professional Free Web Utilities & Tools Directory</title>
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="ToolSub24 is your ultimate destination for high-performance professional utilities, VahanLog vehicle tracking, and advanced QR code generators.">
-    <meta name="keywords" content="vahanlog, toolsub24, qr generator, free web tools">
-    
-    <!-- Styling -->
-    <style>
-        :root {
-            --bg-color: #030712;
-            --card-bg: #0f172a;
-            --border-color: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-orange: #f97316;
-            --accent-blue: #3b82f6;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
-        
-        /* Header */
-        header { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); padding: 16px 32px; position: sticky; top: 0; z-index: 100; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 24px; font-weight: 900; color: var(--accent-orange); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .logo span { color: #ffffff; }
-        .nav-links { display: flex; gap: 24px; align-items: center; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--accent-orange); }
-        .badge { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.3); color: var(--accent-orange); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    <!-- Professional SEO Meta Tags -->
+    <meta name="description" content="ToolSub24 is your ultimate destination for high-performance professional utilities, VahanLog vehicle tracking, advanced QR code generator, and free web tools.">
+    <meta name="keywords" content="vahanlog, toolsub24, toolsub 24, qr code generator, professional qr maker, free online tools, vehicle registration search, transport info tool">
+    <meta name="author" content="ToolSub24">
+    <meta name="robots" content="index, follow">
 
-        /* Hero Section */
-        .hero { max-width: 900px; margin: 0 auto; padding: 80px 20px 40px; text-align: center; }
-        .hero-badge { display: inline-block; background: var(--card-bg); border: 1px solid var(--border-color); padding: 6px 16px; border-radius: 20px; font-size: 12px; color: var(--text-muted); margin-bottom: 24px; }
-        .hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 900; line-height: 1.2; margin-bottom: 20px; }
-        .hero h1 span { color: var(--accent-orange); }
-        .hero p { color: var(--text-muted); font-size: clamp(16px, 2vw, 18px); max-width: 650px; margin: 0 auto 36px; line-height: 1.6; }
-
-        /* Tools Section */
-        .tools-section { max-width: 1200px; margin: 0 auto; padding: 20px 20px 80px; width: 100%; }
-        .section-title { font-size: 22px; font-weight: 800; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-        
-        .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3); }
-        .card:hover { transform: translateY(-4px); border-color: rgba(249, 115, 22, 0.4); }
-        .card-blue:hover { border-color: rgba(59, 130, 246, 0.4); }
-        
-        .icon-box { width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; }
-        .icon-orange { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); color: var(--accent-orange); }
-        .icon-blue { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
-        
-        .card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #ffffff; }
-        .card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
-        
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 14px; text-decoration: none; transition: background 0.2s; }
-        .btn-orange { background-color: var(--accent-orange); color: #030712; }
-        .btn-orange:hover { background-color: #ea580c; }
-        .btn-blue { background-color: var(--accent-blue); color: #ffffff; }
-        .btn-blue:hover { background-color: #2563eb; }
-
-        /* Footer */
-        footer { border-top: 1px solid var(--border-color); background-color: #030712; padding: 30px 20px; text-align: center; color: var(--text-muted); font-size: 13px; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; sm-flex-direction: row; justify-content: space-between; align-items: center; gap: 16px; }
-        .footer-links { display: flex; gap: 20px; }
-        .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-        .footer-links a:hover { color: var(--accent-orange); }
-
-        @media(max-width: 768px) {
-            .nav-links { display: none; }
-        }
-    </style>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { background-color: #020617; color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; }
+    </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between selection:bg-orange-500 selection:text-slate-950">
 
-    <!-- Header -->
-    <header>
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <i class="fa-solid fa-cube"></i>
-                <span>ToolSub<span>24</span></span>
+    <!-- Header Navigation -->
+    <header class="w-full border-b border-slate-800/80 bg-slate-900/90 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3 text-2xl font-black tracking-wider text-orange-500">
+                <div class="w-10 h-10 bg-orange-500/10 border border-orange-500/30 rounded-xl flex items-center justify-center text-orange-500 shadow-inner">
+                    <i class="fa-solid fa-cube"></i>
+                </div>
+                <span>ToolSub<span class="text-white">24</span></span>
             </a>
-            <nav class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="qr-generator.html">QR Generator</a>
-                <a href="vahanlog.html">VahanLog</a>
+            <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-300">
+                <a href="index.html" class="hover:text-orange-400 transition">Home</a>
+                <a href="qr-generator.html" class="hover:text-orange-400 transition">QR Generator</a>
+                <a href="vahanlog.html" class="hover:text-orange-400 transition">VahanLog</a>
             </nav>
-            <div class="badge">
-                <i class="fa-solid fa-bolt mr-1"></i> Pro v2.4
+            <div class="text-xs bg-orange-500/10 border border-orange-500/30 text-orange-400 px-4 py-2 rounded-full font-bold shadow-sm">
+                <i class="fa-solid fa-bolt mr-1.5"></i> Pro Hub v2.4 Active
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <main>
-        <section class="hero">
-            <div class="hero-badge">
-                <i class="fa-solid fa-shield-halved text-orange-500 mr-1"></i> Enterprise-Grade Web Utilities
+    <main class="flex-grow">
+        <section class="max-w-6xl mx-auto px-6 py-20 md:py-28 text-center">
+            <div class="inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 px-5 py-2.5 rounded-full text-xs text-orange-400 mb-8 shadow-xl">
+                <i class="fa-solid fa-shield-halved text-orange-500"></i>
+                <span class="font-medium tracking-wide">Enterprise-Grade Secure Web Utilities</span>
             </div>
-            <h1>Empower Your Digital Workflow with <span>ToolSub24</span></h1>
-            <p>A lightning-fast platform designed for professional developers and everyday users, featuring advanced QR code generation and VahanLog vehicle lookup helpers.</p>
+            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                Empower Your Workflow with <span class="text-orange-500">ToolSub24</span>
+            </h1>
+            <p class="text-slate-400 text-base md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed">
+                A high-speed, modern digital ecosystem featuring lightning-fast QR code generation, VahanLog vehicle lookup, and professional web developer tools.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-5 max-w-md mx-auto">
+                <a href="#tools" class="bg-orange-500 hover:bg-orange-600 text-slate-950 font-extrabold py-4 px-8 rounded-2xl shadow-lg shadow-orange-500/20 transition transform active:scale-95 flex items-center justify-center space-x-3">
+                    <i class="fa-solid fa-toolbox text-lg"></i>
+                    <span>Explore All Tools</span>
+                </a>
+                <a href="qr-generator.html" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold py-4 px-8 rounded-2xl transition flex items-center justify-center space-x-3 shadow-md">
+                    <i class="fa-solid fa-qrcode text-orange-400 text-lg"></i>
+                    <span>Launch QR Generator</span>
+                </a>
+            </div>
         </section>
 
-        <!-- Tools Directory Section -->
-        <section class="tools-section">
-            <h2 class="section-title">
-                <i class="fa-solid fa-layer-group text-orange-500"></i> Active Tools Directory
-            </h2>
-            
-            <div class="grid">
-                <!-- QR Generator Card -->
-                <div class="card">
+        <!-- Tools Grid Section -->
+        <section id="tools" class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-900/80">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 space-y-4 md:space-y-0">
+                <div>
+                    <h2 class="text-3xl font-extrabold tracking-tight text-white flex items-center space-x-3">
+                        <i class="fa-solid fa-layer-group text-orange-500"></i>
+                        <span>Active Professional Directory</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">Fully optimized, high-performance web applications ready for instant use.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl text-xs text-slate-400 font-medium">
+                    <i class="fa-solid fa-circle text-emerald-500 text-[8px] mr-2"></i> All Systems Operational
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Tool 1: QR Generator -->
+                <div class="bg-slate-900/90 border border-slate-800 hover:border-orange-500/60 p-8 rounded-3xl transition-all duration-300 shadow-2xl flex flex-col justify-between group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-bl-full pointer-events-none group-hover:bg-orange-500/10 transition"></div>
                     <div>
-                        <div class="icon-box icon-orange">
+                        <div class="w-14 h-14 bg-orange-500/10 border border-orange-500/30 rounded-2xl flex items-center justify-center text-orange-500 text-2xl mb-6 group-hover:scale-110 transition shadow-inner">
                             <i class="fa-solid fa-qrcode"></i>
                         </div>
-                        <h3>QR Code Generator Pro</h3>
-                        <p>Generate high-resolution dynamic and static QR codes instantly. Fully customizable colors with one-click transparent PNG downloads.</p>
+                        <h3 class="text-2xl font-bold text-white mb-3">QR Code Generator Pro</h3>
+                        <p class="text-slate-400 text-base mb-8 leading-relaxed">
+                            Generate high-resolution dynamic and static QR codes instantly. Fully customizable colors with one-click transparent PNG downloads.
+                        </p>
                     </div>
-                    <a href="qr-generator.html" class="btn btn-orange">
+                    <a href="qr-generator.html" class="w-full bg-slate-950 hover:bg-orange-500 hover:text-slate-950 border border-slate-700 hover:border-orange-500 text-slate-200 font-bold py-3.5 px-6 rounded-2xl transition-all duration-300 text-center flex items-center justify-center space-x-3 shadow-lg">
                         <span>Launch Tool</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </a>
                 </div>
 
-                <!-- VahanLog Card -->
-                <div class="card card-blue">
+                <!-- Tool 2: VahanLog -->
+                <div class="bg-slate-900/90 border border-slate-800 hover:border-blue-500/60 p-8 rounded-3xl transition-all duration-300 shadow-2xl flex flex-col justify-between group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-bl-full pointer-events-none group-hover:bg-blue-500/10 transition"></div>
                     <div>
-                        <div class="icon-box icon-blue">
+                        <div class="w-14 h-14 bg-blue-500/10 border border-blue-500/30 rounded-2xl flex items-center justify-center text-blue-400 text-2xl mb-6 group-hover:scale-110 transition shadow-inner">
                             <i class="fa-solid fa-car"></i>
                         </div>
-                        <h3>VahanLog Vehicle Helper</h3>
-                        <p>Professional transport lookup helper and vehicle registration verification system designed for fast tracking and lookup assistance.</p>
+                        <h3 class="text-2xl font-bold text-white mb-3">VahanLog Vehicle Helper</h3>
+                        <p class="text-slate-400 text-base mb-8 leading-relaxed">
+                            Professional transport lookup helper and vehicle registration verification system designed for fast tracking and lookup assistance.
+                        </p>
                     </div>
-                    <a href="vahanlog.html" class="btn btn-blue">
+                    <a href="vahanlog.html" class="w-full bg-slate-950 hover:bg-blue-600 hover:text-white border border-slate-700 hover:border-blue-500 text-slate-200 font-bold py-3.5 px-6 rounded-2xl transition-all duration-300 text-center flex items-center justify-center space-x-3 shadow-lg">
                         <span>Launch Tool</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </a>
                 </div>
+
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
+    <footer class="border-t border-slate-900 bg-slate-950 py-10 text-center text-slate-500 text-xs">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p>&copy; 2026 ToolSub24. All rights reserved. Built for professional performance.</p>
-            <div class="footer-links">
-                <a href="index.html">Privacy</a>
-                <a href="index.html">Terms</a>
-                <a href="index.html">Contact</a>
+            <div class="flex space-x-6">
+                <a href="index.html" class="hover:text-orange-400 transition font-medium">Privacy</a>
+                <a href="index.html" class="hover:text-orange-400 transition font-medium">Terms</a>
+                <a href="index.html" class="hover:text-orange-400 transition font-medium">Contact</a>
             </div>
         </div>
     </footer>
