@@ -1,218 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#d97706">
-<title>AI Sadhan | ToolSub24 - 100+ AI Tools</title>
-<meta name="description" content="Discover free and paid AI tools for writing, image generation, video, coding and utilities.">
-<meta property="og:title" content="AI Sadhan | ToolSub24">
-<meta property="og:description" content="Discover 100+ free and paid AI tools in one place.">
-<meta property="og:type" content="website">
-<link rel="icon" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/svgs/solid/cube.svg">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root{--orange:#d97706;--dark:#0f172a;--muted:#64748b;--line:#e2e8f0;--paper:#faf8f5}
-*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-body{background:var(--paper);color:#1e293b;line-height:1.5;min-height:100vh}
-header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);padding:14px 4%;display:flex;justify-content:space-between;align-items:center;gap:12px;box-shadow:0 1px 4px #00000008}
-.logo{font-size:20px;font-weight:900;color:var(--orange);text-decoration:none}.logo span{color:var(--dark)}
-.badge{background:#fef3c7;color:#b45309;border:1px solid #fcd34d;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700}
-main{width:min(1100px,100%);margin:auto;padding:24px 16px}
-.hero,.widget,.tool-card{background:#fff;border:1px solid var(--line);box-shadow:0 2px 5px #00000008}
-.hero{padding:32px 20px;text-align:center;border-radius:18px;margin-bottom:22px}
-.hero-tag{display:inline-block;background:#ecfdf5;border:1px solid #a7f3d0;color:#047857;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:12px}
-h1{font-size:clamp(24px,5vw,38px);line-height:1.2;color:var(--dark);margin-bottom:10px}h1 span{color:var(--orange)}
-.hero p{color:var(--muted);max-width:650px;margin:0 auto 20px}
-.search-box{display:flex;max-width:700px;margin:auto;background:var(--paper);border:2px solid var(--orange);border-radius:12px;padding:5px}
-.search-box input{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:10px 12px;font-size:16px}
-button{cursor:pointer}
-.primary,.search-box button,.tool-link{background:var(--orange);color:white;border:0;border-radius:9px;font-weight:750}
-.search-box button{padding:10px 22px}
-.widget{border-radius:16px;padding:22px;margin-bottom:22px}
-.widget h2{font-size:21px;color:var(--dark);margin-bottom:5px}.widget p{color:var(--muted);margin-bottom:12px}
-.widget input{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:9px;font-size:15px;margin-bottom:10px}
-.primary{padding:11px 18px;font-size:14px}
-.result{display:none;margin-top:12px;padding:14px;background:#fffbeb;border:1px solid #fcd34d;border-radius:9px;white-space:pre-wrap;overflow-wrap:anywhere}
-.copy-btn{background:var(--dark);color:white;border:0;padding:7px 12px;border-radius:6px;margin-top:9px}
-.filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:12px 0}
-.filter-btn{background:white;border:1px solid #cbd5e1;color:#334155;padding:8px 13px;border-radius:9px;font-weight:700}
-.filter-btn.active{background:var(--dark);color:white;border-color:var(--dark)}
-.category-btn.active{background:var(--orange);border-color:var(--orange);color:white}
-.section-title{font-size:23px;color:var(--dark);margin:26px 0 3px}.section-desc{color:var(--muted);margin-bottom:15px}
-.tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.tool-card{border-radius:15px;padding:17px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.tool-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.tool-name{display:flex;align-items:center;gap:10px;min-width:0}
-.tool-icon{width:42px;height:42px;flex:none;border-radius:11px;background:#fef3c7;color:var(--orange);display:grid;place-items:center;font-size:18px}
-.tool-card h3{font-size:17px;color:var(--dark);overflow-wrap:anywhere}
-.tool-card p{color:var(--muted);font-size:14px;flex:1}
-.tag{font-size:11px;font-weight:800;padding:4px 8px;border-radius:6px;white-space:nowrap}
-.free{background:#dcfce7;color:#15803d}.paid{background:#fee2e2;color:#b91c1c}
-.tool-link{display:block;text-align:center;text-decoration:none;padding:10px;font-size:14px}
-.empty{grid-column:1/-1;text-align:center;padding:30px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:12px}
-footer{background:white;border-top:1px solid var(--line);padding:24px 14px;text-align:center;color:var(--muted);font-size:13px}
-.share-container{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin:13px 0}
-.share-btn{border:0;border-radius:22px;padding:10px 15px;color:white;text-decoration:none;font-weight:750;font-size:13px;display:inline-flex;gap:7px;align-items:center}
-.whatsapp{background:#25d366}.facebook{background:#1877f2}.telegram{background:#168acb}.copy{background:var(--dark)}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 16px;border-radius:9px;display:none;z-index:30}
-@media(max-width:600px){header{padding:12px}.logo{font-size:16px}.badge{font-size:10px;padding:4px 8px}main{padding:16px 12px}.hero{padding:25px 14px}.tools-grid{gap:9px}.tool-card{padding:11px;gap:8px}.tool-card h3{font-size:13px}.tool-card p{font-size:11px}.tool-icon{width:30px;height:30px;font-size:13px}.tag{font-size:9px;padding:3px 5px}.tool-link{font-size:11px;padding:8px}.filter-btn{font-size:12px;padding:7px 9px}}
-@media(max-width:360px){.tools-grid{grid-template-columns:1fr}.search-box button{padding:9px 12px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Sadhan & ToolSub24 - Ultimate Free & Paid AI Tools Directory</title>
+    
+    <!-- Favicon / Logomark -->
+    <link rel="icon" type="image/x-icon" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/svgs/solid/cube.svg">
+
+    <!-- Open Graph (OG) Tags for WhatsApp & Social Media Preview -->
+    <meta property="og:title" content="AI Sadhan & ToolSub24 - Ultimate Free & Paid AI Tools Directory">
+    <meta property="og:description" content="Discover 100+ best free and paid AI tools for writing, image generation, video editing, coding, and utilities with universal multi-language prompt optimizer.">
+    <meta property="og:type" content="website">
+
+    <!-- 200+ SEO Keywords & Tags for High Ranking -->
+    <meta name="keywords" content="ai tools directory, free ai tools, paid ai tools, best ai software, artificial intelligence hub, chatgpt, claude ai, google gemini, perplexity ai, microsoft copilot, copy ai, jasper ai, notion ai, grammarly ai, quillbot, writesonic, anyword, rytr, askyourpdf, chatdoc, deepl translate, huggingchat, poe ai, character ai, pi ai, meta llama, wordtune, hypotenuse ai, peppertype, paragraphai, midjourney, stable diffusion, canva ai, leonardo ai, adobe firefly, photoroom, remove bg, upscayl, dall e 3, bluewillow, ideogram, krea ai, clipdrop, photoleap, letsenhance, recraft ai, artbreeder, deepai, nightcafe, craiyon, stockimg ai, vanceai, cleanup pictures, unscreen, magic eraser, elevenlabs, runway ml, pika labs, synthesia, descript, kling ai, sora openai, lumen5, mubert, soundful, heygen, invideo ai, filmora ai, capcut ai, veed io, wavve, murf ai, play ht, lovo ai, resemble ai, suno ai, udio, lalal ai, adobe podcast, clipchamp, github copilot, hugging face, blackbox ai, tabnine, replit ai, codeium, sourcegraph cody, bito ai, cursor ai, amazon codewhisperer, phind, v0 vercel, codiumai, supermaven, sweep ai, google search, github repository, h2o ai, datarobot, uizard, framer ai, galileo ai, mdn web docs, stack overflow, vercel deploy, image to text ai, ocr tools, pdf reader ai, code generator ai, video editor ai, voice generator ai, audio enhancer ai, SEO writing tools, marketing copy generators, website builder ai, UI UX design ai, free chatgpt alternative, best AI tools 2026, machine learning platform, python code helper, javascript AI assistant, social media content generator, logo generator ai, background remover online, text to speech converter, speech to text converter, music generator ai, AI art maker, realistic image generator, presentation maker ai, translation tools online, grammar checker ai, paraphrasing tool online, resume writer ai, email writer ai, blog post generator, SEO optimization tools, business AI software, developer tools online, cloud IDE ai, automated testing ai, unit test generator, code review assistant, data science platform, predictive analytics ai, wireframe to ui ai, prototype generator, frontend development tools, static site host, git version control, web development documentation, technical knowledge platform, cloud deployment tools, AI tool finder, top AI directory website, ToolSub24, AI Sadhan">
+    <meta name="description" content="Discover 100+ best free and paid AI tools for writing, image generation, video editing, coding, and utilities. Features universal multi-language AI prompt optimizer and fast search.">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+        body { background-color: #FAF8F5; color: #1E293B; line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
+
+        /* Navigation Header */
+        header { background: #FFFFFF; border-bottom: 1px solid #E2E8F0; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
+        .logo { font-size: 16px; font-weight: 900; color: #D97706; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+        .logo span { color: #0F172A; }
+        
+        .header-actions { display: flex; align-items: center; gap: 8px; }
+        .badge { background: #FEF3C7; color: #B45309; border: 1px solid #FCD34D; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; }
+
+        main { width: 100%; max-width: 1050px; margin: 0 auto; padding: 20px 12px; flex-grow: 1; }
+
+        /* Hero Section */
+        .hero { background: #FFFFFF; border: 1px solid #E2E8F0; padding: 25px 16px; text-align: center; border-radius: 14px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.01); }
+        .hero-tag { display: inline-block; background: #ECFDF5; border: 1px solid #A7F3D0; color: #047857; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; margin-bottom: 8px; }
+        h1 { font-size: 21px; font-weight: 900; color: #0F172A; margin-bottom: 6px; line-height: 1.2; }
+        h1 span { color: #D97706; }
+        .hero p { font-size: 11px; color: #64748B; max-width: 500px; margin: 0 auto 14px; }
+        
+        /* Search Box */
+        .search-box { display: flex; max-width: 480px; margin: 0 auto; background: #FAF8F5; border: 2px solid #D97706; border-radius: 10px; padding: 3px; box-shadow: 0 3px 10px rgba(217, 119, 6, 0.1); }
+        .search-box input { flex-grow: 1; border: none; padding: 8px 10px; font-size: 12px; outline: none; background: transparent; color: #0F172A; }
+        .search-box button { background: #D97706; color: #FFFFFF; border: none; padding: 8px 14px; font-weight: 700; border-radius: 7px; cursor: pointer; font-size: 11px; }
+
+        /* Prompt Builder Widget */
+        .widget-container { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; margin-bottom: 18px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); text-align: left; }
+        .widget-container h3 { font-size: 13px; font-weight: 800; color: #0F172A; margin-bottom: 3px; display: flex; align-items: center; gap: 6px; }
+        .widget-container p { font-size: 10px; color: #64748B; margin-bottom: 8px; }
+        .widget-input { width: 100%; border: 1px solid #CBD5E1; border-radius: 7px; padding: 8px 10px; font-size: 11px; margin-bottom: 6px; outline: none; background: #FAF8F5; color: #0F172A; }
+        .widget-input:focus { border-color: #D97706; background: #FFFFFF; }
+        .widget-btn { background: #D97706; color: #FFFFFF; border: none; padding: 6px 12px; font-weight: 700; border-radius: 6px; font-size: 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; }
+        .widget-result { margin-top: 8px; background: #FEF3C7; border: 1px solid #FCD34D; padding: 8px; border-radius: 6px; font-size: 10px; color: #78350F; line-height: 1.4; display: none; word-break: break-all; }
+        .copy-btn { margin-top: 5px; background: #0F172A; color: #FFFFFF; border: none; padding: 3px 6px; font-size: 9px; font-weight: 700; border-radius: 4px; cursor: pointer; display: inline-block; }
+
+        /* Filters */
+        .type-filters { display: flex; justify-content: center; gap: 6px; margin-bottom: 10px; }
+        .type-btn { background: #FFFFFF; border: 1px solid #CBD5E1; color: #475569; padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; cursor: pointer; }
+        .type-btn.active { background: #0F172A; color: #FFFFFF; border-color: #0F172A; }
+
+        .filter-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin-bottom: 18px; }
+        .cat-btn { background: #FFFFFF; border: 1px solid #CBD5E1; color: #334155; padding: 4px 8px; border-radius: 6px; font-size: 10px; font-weight: 600; cursor: pointer; }
+        .cat-btn.active { background: #D97706; color: #FFFFFF; border-color: #D97706; }
+
+        .section-title { font-size: 15px; font-weight: 800; margin-bottom: 2px; color: #0F172A; }
+        .section-desc { color: #64748B; font-size: 10px; margin-bottom: 12px; }
+        
+        /* 2-Column Responsive Grid */
+        .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 30px; }
+        
+        .tool-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; transition: border-color 0.2s; }
+        .tool-card:hover { border-color: #D97706; }
+        
+        .tool-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+        .tool-title-wrapper { display: flex; align-items: center; gap: 6px; overflow: hidden; }
+        .tool-icon { width: 24px; height: 24px; background: #FEF3C7; color: #D97706; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; }
+        .tool-badge-free { font-size: 7px; font-weight: 700; padding: 2px 4px; border-radius: 3px; background: #DCFCE7; color: #15803D; flex-shrink: 0; }
+        .tool-badge-paid { font-size: 7px; font-weight: 700; padding: 2px 4px; border-radius: 3px; background: #FEE2E2; color: #B91C1C; flex-shrink: 0; }
+        
+        .tool-card h3 { font-size: 11px; font-weight: 700; color: #0F172A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .tool-card p { color: #64748B; font-size: 9px; margin-bottom: 8px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        .tool-link { display: block; width: 100%; background: #D97706; color: #FFFFFF; font-weight: 700; font-size: 9px; text-decoration: none; padding: 5px; border-radius: 5px; text-align: center; }
+        .tool-link:hover { background: #B45309; }
+
+        /* Footer */
+        footer { border-top: 1px solid #E2E8F0; background-color: #FFFFFF; padding: 16px 12px; text-align: center; color: #64748B; font-size: 10px; }
+    </style>
 </head>
 <body>
-<header>
-<a class="logo" href="#"><i class="fa-solid fa-cube"></i> AI Sadhan <span>| ToolSub24</span></a>
-<span class="badge"><i class="fa-solid fa-rocket"></i> AI Tools Hub</span>
-</header>
-<main>
-<section class="hero">
-<div class="hero-tag">✨ Clean Minimalist AI Hub</div>
-<h1>Explore <span>100+ AI Tools</span> &amp; Prompts</h1>
-<p>A soothing, fast and eye-friendly directory for your professional requirements.</p>
-<div class="search-box">
-<input id="searchInput" type="search" placeholder="Search tool or requirement..." aria-label="Search tools">
-<button onclick="renderTools()">Search</button>
-</div>
-</section>
-<section class="widget">
-<h2><i class="fa-solid fa-wand-magic-sparkles" style="color:#d97706"></i> Universal AI Prompt Optimizer</h2>
-<p>Type your idea in any language to create a structured prompt template.</p>
-<input id="userIdea" type="text" placeholder="Type requirement (e.g. image to text)...">
-<button class="primary" onclick="generatePrompt()"><i class="fa-solid fa-bolt"></i> Generate Prompt</button>
-<div class="result" id="promptResult"><strong>Optimized Prompt:</strong><div id="promptOutput"></div><button class="copy-btn" onclick="copyText(document.getElementById('promptOutput').innerText)">Copy Prompt</button></div>
-</section>
-<div class="filters" id="typeFilters">
-<button class="filter-btn active" data-type="all">All Tools</button>
-<button class="filter-btn" data-type="free">🟢 Free / Free tier</button>
-<button class="filter-btn" data-type="paid">⭐ Paid / Pro</button>
-</div>
-<div class="filters" id="categoryFilters">
-<button class="filter-btn category-btn active" data-cat="all">All Categories</button>
-<button class="filter-btn category-btn" data-cat="writing">✍️ Writing</button>
-<button class="filter-btn category-btn" data-cat="image">🎨 Image &amp; OCR</button>
-<button class="filter-btn category-btn" data-cat="video">🎥 Video &amp; Audio</button>
-<button class="filter-btn category-btn" data-cat="code">💻 Code</button>
-<button class="filter-btn category-btn" data-cat="utility">🛠️ Utilities</button>
-</div>
-<h2 class="section-title">Available Tools (<span id="toolCount">0</span>)</h2>
-<p class="section-desc">Choose a tool to open its official website. Availability and pricing may change.</p>
-<section class="tools-grid" id="toolsGrid"></section>
-</main>
-<footer>
-<strong style="color:#0f172a">Share AI Sadhan with friends</strong>
-<div class="share-container">
-<button class="share-btn whatsapp" onclick="shareWhatsApp()"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
-<button class="share-btn facebook" onclick="shareFacebook()"><i class="fa-brands fa-facebook"></i> Facebook</button>
-<button class="share-btn telegram" onclick="shareTelegram()"><i class="fa-brands fa-telegram"></i> Telegram</button>
-<button class="share-btn copy" onclick="copyText(getPageUrl())"><i class="fa-solid fa-link"></i> Copy Link</button>
-<button class="share-btn" style="background:#475569" onclick="shareNative()"><i class="fa-solid fa-share-nodes"></i> More</button>
-</div>
-<div>© 2026 AI Sadhan &amp; ToolSub24. All rights reserved.</div>
-</footer>
-<div class="toast" id="toast"></div>
-<script>
-const toolsData = [
-["ChatGPT (OpenAI)","writing","free","Conversational AI chatbot for writing, questions and ideas.","https://chatgpt.com","fa-comments"],
-["Claude AI","writing","free","AI assistant for writing, reasoning and document analysis.","https://claude.ai","fa-brain"],
-["Google Gemini","writing","free","Google AI assistant for text, images and coding.","https://gemini.google.com","fa-gem"],
-["Perplexity AI","writing","free","AI search engine with sourced answers.","https://www.perplexity.ai","fa-globe"],
-["Microsoft Copilot","writing","free","AI assistant for search, writing and productivity.","https://copilot.microsoft.com","fa-windows"],
-["Copy.ai","writing","paid","AI writing and marketing content platform.","https://www.copy.ai","fa-pen-nib"],
-["Jasper AI","writing","paid","AI marketing content and brand writing platform.","https://www.jasper.ai","fa-bullhorn"],
-["Notion AI","writing","paid","AI features for notes, documents and workspace.","https://www.notion.com/product/ai","fa-note-sticky"],
-["Grammarly","writing","free","Writing, spelling and grammar assistant.","https://www.grammarly.com","fa-spell-check"],
-["QuillBot","writing","free","Paraphrasing, summarizing and writing tools.","https://quillbot.com","fa-feather"],
-["Writesonic","writing","paid","AI writing and marketing content platform.","https://writesonic.com","fa-pen"],
-["Rytr","writing","free","AI writing assistant for short-form content.","https://rytr.me","fa-pencil"],
-["Wordtune","writing","free","Rewrite and improve sentences with AI.","https://www.wordtune.com","fa-w"],
-["DeepL","writing","free","AI-powered translation and writing assistance.","https://www.deepl.com","fa-language"],
-["LanguageTool","writing","free","Grammar, spelling and style checker.","https://languagetool.org","fa-spell-check"],
-["Hemingway Editor","writing","free","Improve readability and writing clarity.","https://hemingwayapp.com","fa-book"],
-["Poe","writing","free","Explore and chat with different AI bots.","https://poe.com","fa-comments"],
-["Character.AI","writing","free","Chat with community-created AI characters.","https://character.ai","fa-user-astronaut"],
-["Pi AI","writing","free","Conversational personal AI assistant.","https://pi.ai","fa-comment-dots"],
-["HuggingChat","writing","free","Open-source model chat interface.","https://huggingface.co/chat","fa-face-smile"],
-["You.com","writing","free","AI search and assistant platform.","https://you.com","fa-magnifying-glass"],
-["AskYourPDF","writing","free","Chat with and extract information from PDFs.","https://askyourpdf.com","fa-file-pdf"],
-["ChatPDF","writing","free","Ask questions about PDF documents.","https://www.chatpdf.com","fa-file-pdf"],
-["Humata AI","writing","paid","AI document analysis and question answering.","https://www.humata.ai","fa-file-lines"],
-["Elicit","writing","free","AI research assistant for academic papers.","https://elicit.com","fa-flask"],
-["Consensus","writing","free","Search scientific research with AI summaries.","https://consensus.app","fa-graduation-cap"],
-["Midjourney","image","paid","AI image generation from text prompts.","https://www.midjourney.com","fa-image"],
-["DALL·E","image","paid","Generate images from text prompts.","https://openai.com","fa-image"],
-["Adobe Firefly","image","free","Generative AI tools for images and design.","https://firefly.adobe.com","fa-fire"],
-["Canva AI","image","free","AI-powered design, image and presentation tools.","https://www.canva.com","fa-palette"],
-["Leonardo AI","image","free","AI image generation and creative assets.","https://leonardo.ai","fa-paintbrush"],
-["Ideogram","image","free","AI image generation with text rendering features.","https://ideogram.ai","fa-image"],
-["Stable Diffusion","image","free","Open image generation model ecosystem.","https://stability.ai","fa-wand-magic-sparkles"],
-["Playground AI","image","free","Create and edit AI-generated images.","https://playground.com","fa-images"],
-["NightCafe","image","free","AI art generation community and tools.","https://nightcafe.studio","fa-moon"],
-["Craiyon","image","free","Simple text-to-image AI generator.","https://www.craiyon.com","fa-palette"],
-["Krea AI","image","free","AI image generation and creative enhancement.","https://www.krea.ai","fa-wand-magic"],
-["Recraft","image","free","AI design and vector image generation.","https://www.recraft.ai","fa-pen-ruler"],
-["Clipdrop","image","free","AI image editing and cleanup tools.","https://clipdrop.co","fa-scissors"],
-["Remove.bg","image","free","Remove image backgrounds automatically.","https://www.remove.bg","fa-eraser"],
-["PhotoRoom","image","free","Product photo editing and background removal.","https://www.photoroom.com","fa-camera"],
-["Upscayl","image","free","Open-source image upscaling application.","https://upscayl.org","fa-up-right-and-down-left-from-center"],
-["Let's Enhance","image","paid","AI image upscaling and enhancement.","https://letsenhance.io","fa-expand"],
-["Cleanup.pictures","image","free","Remove unwanted objects from images.","https://cleanup.pictures","fa-broom"],
-["VanceAI","image","paid","AI image enhancement and editing tools.","https://vanceai.com","fa-wand-magic-sparkles"],
-["DeepAI Image Generator","image","free","AI image generation and image APIs.","https://deepai.org","fa-image"],
-["Artbreeder","image","free","Create and remix images with AI.","https://www.artbreeder.com","fa-palette"],
-["Photopea","image","free","Browser-based image editor for layered graphics.","https://www.photopea.com","fa-crop"],
-["Pixlr","image","free","Online photo editing and AI design tools.","https://pixlr.com","fa-image"],
-["Fotor","image","free","Photo editing, design and AI image tools.","https://www.fotor.com","fa-camera"],
-["Visme","image","free","Visual content, infographics and presentations.","https://www.visme.co","fa-chart-pie"],
-["Runway","video","free","AI video generation and editing tools.","https://runwayml.com","fa-film"],
-["Pika","video","free","AI video generation from prompts and images.","https://pika.art","fa-video"],
-["Synthesia","video","paid","AI avatar and presenter video creation.","https://www.synthesia.io","fa-person-video"],
-["HeyGen","video","free","AI avatar videos and translation.","https://www.heygen.com","fa-user-tie"],
-["InVideo AI","video","free","Create videos from text prompts.","https://invideo.io","fa-clapperboard"],
-["VEED","video","free","Online video editing with AI features.","https://www.veed.io","fa-scissors"],
-["Descript","video","free","Edit audio and video using text-based tools.","https://www.descript.com","fa-waveform"],
-["Kapwing","video","free","Online video editing and content creation.","https://www.kapwing.com","fa-film"],
-["Lumen5","video","free","Turn written content into videos.","https://lumen5.com","fa-photo-film"],
-["Fliki","video","free","Text-to-video and AI voice generation.","https://fliki.ai","fa-microphone"],
-["OpusClip","video","free","Create short clips from long videos.","https://www.opus.pro","fa-scissors"],
-["Kling AI","video","free","AI video generation platform.","https://klingai.com","fa-video"],
-["Luma AI","video","free","AI video and 3D creation tools.","https://lumalabs.ai","fa-cube"],
-["ElevenLabs","video","free","AI voice generation and text-to-speech.","https://elevenlabs.io","fa-microphone"],
-["Murf AI","video","free","AI voiceovers and text-to-speech.","https://murf.ai","fa-volume-high"],
-["PlayHT","video","free","AI voice generation platform.","https://play.ht","fa-headphones"],
-["Suno","video","free","Generate music from text prompts.","https://suno.com","fa-music"],
-["Udio","video","free","AI music creation platform.","https://udio.com","fa-music"],
-["Adobe Podcast","video","free","AI audio enhancement and speech tools.","https://podcast.adobe.com","fa-podcast"],
-["Auphonic","video","free","Automated audio post-production.","https://auphonic.com","fa-sliders"],
-["GitHub Copilot","code","paid","AI pair programmer for code completion.","https://github.com/features/copilot","fa-github"],
-["Cursor","code","free","AI-powered code editor.","https://cursor.com","fa-code"],
-["Replit","code","free","Browser-based coding and AI app building.","https://replit.com","fa-terminal"],
-["Codeium / Windsurf","code","free","AI coding assistance and editor.","https://windsurf.com","fa-wind"],
-["Tabnine","code","paid","AI code completion and development assistant.","https://www.tabnine.com","fa-code"],
-["Blackbox AI","code","free","AI coding assistant and code search.","https://www.blackbox.ai","fa-terminal"],
-[" v0 by Vercel","code","free","Generate user interfaces from prompts.","https://v0.dev","fa-window-maximize"],
-["Bolt.new","code","free","Build web applications from prompts.","https://bolt.new","fa-bolt"],
-["Lovable","code","free","Create applications with AI assistance.","https://lovable.dev","fa-heart"],
-["Phind","code","free","AI search assistant for developers.","https://www.phind.com","fa-magnifying-glass"],
-["Sourcegraph Cody","code","free","AI coding assistant for codebases.","https://sourcegraph.com/cody","fa-code-branch"],
-["Hugging Face","code","free","Models, datasets and machine-learning tools.","https://huggingface.co","fa-face-smile"],
-["Google AI Studio","code","free","Experiment with Google's generative AI models.","https://aistudio.google.com","fa-google"],
-["Dify","code","free","Build AI applications and workflows.","https://dify.ai","fa-diagram-project"],
-[" n8n","code","free","Workflow automation with AI integrations.","https://n8n.io","fa-diagram-project"],
-["Zapier","code","free","Connect apps and automate workflows.","https://zapier.com","fa-bolt"],
-["Make","code","free","Visual automation and app integrations.","https://www.make.com","fa-gears"],
-["StackBlitz","code","free","Online development environment.","https://stackblitz.com","fa-code"],
-["CodeSandbox","code","free","Cloud development environment for web projects.","https://codesandbox.io","fa-box"],
-["JSFiddle","code","free","Test and share HTML, CSS and JavaScript.","https://jsfiddle.net","fa-code"],
-["CodePen","code","free","Frontend code playground and community.","https://codepen.io","fa-pen"],
-["MDN Web Docs","code","free","Web development documentation and guides.","https://developer.mozilla.org","fa-book-open"],
-["Stack Overflow","code","free","Developer questions and answers community.","https://stackoverflow.com","fa-stack-overflow"],
-["Google Translate","utility","free","Translate text, documents and websites.","https://translate.google.com","fa-language"],
-["Smallpdf","utility","free","PDF conversion, compression and editing tools.","https://smallpdf.com","fa-file-pdf"],
-["iLovePDF","utility","free","Online PDF tools and document conversion.","https://www.ilovepdf.com","fa-file-pdf"],
-["PDF24 Tools","utility","free","Free online PDF utilities.","https://tools.pdf24.org","fa-file-pdf"],
-["TinyWow","utility","free","Free online file, PDF and image tools.","https://tinywow.com","fa-toolbox"],
-["CloudConvert","utility","free","Convert files between many formaxplore <span>100+ AI Tools</span> & Prompts</h1>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo"><i class="fa-solid fa-cube"></i> AI Sadhan <span>| ToolSub24</span></a>
+        <div class="header-actions">
+            <span class="badge"><i class="fa-solid fa-rocket"></i> SEO Optimized</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-tag">✨ Clean Minimalist AI Hub</div>
+            <h1>Explore <span>100+ AI Tools</span> & Prompts</h1>
             <p>A soothing, fast and eye-friendly directory for all your professional requirements.</p>
             
             <div class="search-box">
@@ -262,10 +153,14 @@ const toolsData = [
     </main>
 
     <footer>
-        &copy; 2026 AI Sadhan & ToolSub24. All rights reserved.
+        <div>&copy; 2026 AI Sadhan & ToolSub24. All rights reserved. Use browser share menu to share.</div>
     </footer>
 
     <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            liveSearch();
+        });
+
         function generateUniversalPrompt() {
             const idea = document.getElementById('userIdea').value.trim();
             const resBox = document.getElementById('promptResult');
@@ -454,10 +349,6 @@ const toolsData = [
             btn.classList.add('active');
             liveSearch();
         }
-
-        window.onload = function() {
-            liveSearch();
-        };
     </script>
 </body>
 </html>
