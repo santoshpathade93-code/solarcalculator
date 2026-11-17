@@ -157,6 +157,9 @@
     </footer>
 
     <script>
+        let currentType = 'all';
+        let currentCat = 'all';
+
         window.addEventListener('DOMContentLoaded', () => {
             liveSearch();
         });
@@ -177,6 +180,7 @@
         }
 
         const toolsData = [
+            // Writing & Research Tools
             { name: "ChatGPT (OpenAI)", cat: "writing", type: "free", keywords: "chat text write article question answer free", badge: "Free", icon: "fa-comments", desc: "Conversational AI chatbot with a powerful free tier.", link: "https://chatgpt.com" },
             { name: "Claude AI", cat: "writing", type: "free", keywords: "document read pdf text extract free", badge: "Free", icon: "fa-brain", desc: "Advanced model for analyzing large documents and text.", link: "https://claude.ai" },
             { name: "Google Gemini", cat: "writing", type: "free", keywords: "google multi modal text image code chat free", badge: "Free", icon: "fa-google", desc: "Google's multimodal AI model processing text and code.", link: "https://gemini.google.com" },
@@ -198,157 +202,4 @@
             { name: "Character.ai", cat: "writing", type: "free", keywords: "chat character roleplay fictional ai free", badge: "Free", icon: "fa-masks-theater", desc: "Create and chat with interactive fictional characters.", link: "https://character.ai" },
             { name: "Pi (Inflection)", cat: "writing", type: "free", keywords: "personal ai chat friendly assistant pi free", badge: "Free", icon: "fa-comment-dots", desc: "A personal AI designed to be supportive.", link: "https://pi.ai" },
             { name: "Llama AI (Meta)", cat: "writing", type: "free", keywords: "meta open source llama ai model free", badge: "Free", icon: "fa-meta", desc: "Meta's open-source AI model ecosystem.", link: "https://www.meta.ai" },
-            { name: "Wordtune", cat: "writing", type: "free", keywords: "rewrite sentence paragraph tone text free", badge: "Free", icon: "fa-wand-magic", desc: "AI writing companion to refine tone.", link: "https://www.wordtune.com" },
-            { name: "Hypotenuse AI", cat: "writing", type: "paid", keywords: "ecommerce product description write text paid", badge: "Paid / Pro", icon: "fa-store", desc: "AI content generator for ecommerce.", link: "https://www.hypotenuse.ai" },
-            { name: "Peppertype", cat: "writing", type: "paid", keywords: "content generator copy text marketing paid", badge: "Paid / Pro", icon: "fa-pepper-hot", desc: "Virtual content assistant for marketing copy.", link: "https://www.peppertype.ai" },
-            { name: "ParagraphAI", cat: "writing", type: "free", keywords: "writer extension keyboard chat text free", badge: "Free", icon: "fa-keyboard", desc: "AI writer and keyboard assistant with free tier.", link: "https://paragraphai.com" },
-
-            // Image & Art & OCR (26-55)
-            { name: "Midjourney", cat: "image", type: "paid", keywords: "image photo art generate picture text to image paid", badge: "Paid / Pro", icon: "fa-image", desc: "Industry-standard text-to-image generator.", link: "https://midjourney.com" },
-            { name: "Stable Diffusion", cat: "image", type: "free", keywords: "image open source art generate picture free", badge: "Free", icon: "fa-paintbrush", desc: "Open-source latent diffusion model for images.", link: "https://stability.ai" },
-            { name: "Canva AI Magic Studio", cat: "image", type: "free", keywords: "image text design photo graphic ocr editor free", badge: "Free", icon: "fa-wand-magic-sparkles", desc: "Graphic design suite with free AI generation tools.", link: "https://canva.com" },
-            { name: "Leonardo AI", cat: "image", type: "free", keywords: "art game asset image generate picture free", badge: "Free", icon: "fa-palette", desc: "Game asset platform with daily free tokens.", link: "https://leonardo.ai" },
-            { name: "Adobe Firefly", cat: "image", type: "free", keywords: "creative image design generative photo free", badge: "Free", icon: "fa-fire", desc: "Creative generative AI models with free credits.", link: "https://firefly.adobe.com" },
-            { name: "Photoroom", cat: "image", type: "free", keywords: "photo background remove product image text free", badge: "Free", icon: "fa-camera", desc: "Instant background remover and photo editor.", link: "https://photoroom.com" },
-            { name: "Remove.bg", cat: "image", type: "free", keywords: "background remove image transparent photo free", badge: "Free", icon: "fa-image", desc: "Automatic background removal utility.", link: "https://remove.bg" },
-            { name: "Upscayl", cat: "image", type: "free", keywords: "upscale image enhance photo resolution free", badge: "Free", icon: "fa-expand", desc: "Open-source free AI image upscaler.", link: "https://upscayl.org" },
-            { name: "DALL-E 3 (OpenAI)", cat: "image", type: "paid", keywords: "image generate prompt text to image openai paid", badge: "Paid / Pro", icon: "fa-wand-sparkles", desc: "OpenAI's advanced paid text-to-image generator.", link: "https://openai.com/dall-e-3" },
-            { name: "BlueWillow", cat: "image", type: "free", keywords: "image generator art discord ai free", badge: "Free", icon: "fa-feather-pointed", desc: "AI image generation tool for graphics.", link: "https://www.bluewillow.ai" },
-            { name: "Ideogram", cat: "image", type: "free", keywords: "typography text on image poster design free", badge: "Free", icon: "fa-font", desc: "AI image generator specializing in rendering text.", link: "https://ideogram.ai" },
-            { name: "Krea AI", cat: "image", type: "free", keywords: "realtime generation canvas upscale ai free", badge: "Free", icon: "fa-pen-clip", desc: "Real-time AI generation and canvas enhancement.", link: "https://www.krea.ai" },
-            { name: "Clipdrop (by Jasper)", cat: "image", type: "free", keywords: "relight remove object upscale image ai free", badge: "Free", icon: "fa-droplet", desc: "Ecosystem of AI tools with free tier.", link: "https://clipdrop.co" },
-            { name: "Photoleap", cat: "image", type: "paid", keywords: "photo editor ai generator effects paid", badge: "Paid / Pro", icon: "fa-photo-film", desc: "AI photo editing app with paid features.", link: "https://photoleapapp.com" },
-            { name: "LetsEnhance", cat: "image", type: "paid", keywords: "enhance upscale image resolution fix blur paid", badge: "Paid / Pro", icon: "fa-magnifying-glass-plus", desc: "AI-powered image upscaler web tool.", link: "https://letsenhance.io" },
-            { name: "Recraft AI", cat: "image", type: "free", keywords: "vector art icon illustration design ai free", badge: "Free", icon: "fa-vector-square", desc: "AI vector art generator with free options.", link: "https://www.recraft.ai" },
-            { name: "Artbreeder", cat: "image", type: "free", keywords: "blend portraits landscape art generator free", badge: "Free", icon: "fa-dna", desc: "Generative art platform with free community features.", link: "https://www.artbreeder.com" },
-            { name: "DeepAI", cat: "image", type: "free", keywords: "image generator chatbot tools suite free", badge: "Free", icon: "fa-brain", desc: "Suite of AI tools including free image generation.", link: "https://deepai.org" },
-            { name: "NightCafe Creator", cat: "image", type: "free", keywords: "art generator stable diffusion style free", badge: "Free", icon: "fa-mug-hot", desc: "AI art generator with daily free credits.", link: "https://creator.nightcafe.studio" },
-            { name: "Craiyon", cat: "image", type: "free", keywords: "free image generator dalle mini free", badge: "Free", icon: "fa-paintbrush", desc: "Completely free AI image generator.", link: "https://craiyon.com" },
-            { name: "Stockimg AI", cat: "image", type: "paid", keywords: "stock photo logo poster book cover ai paid", badge: "Paid / Pro", icon: "fa-images", desc: "Generate stock photos and logos with premium plans.", link: "https://stockimg.ai" },
-            { name: "VanceAI", cat: "image", type: "paid", keywords: "photo enhancer upscale background remover paid", badge: "Paid / Pro", icon: "fa-wand-magic", desc: "AI photo enhancer toolkit.", link: "https://vanceai.com" },
-            { name: "Cleanup.pictures", cat: "image", type: "free", keywords: "remove object blemish cleanup photo free", badge: "Free", icon: "fa-eraser", desc: "Remove objects or text with free standard resolution.", link: "https://cleanup.pictures" },
-            { name: "Unscreen", cat: "image", type: "free", keywords: "video background remove gif transparent free", badge: "Free", icon: "fa-film", desc: "Remove background from videos automatically.", link: "https://www.unscreen.com" },
-            { name: "Magic Eraser", cat: "image", type: "free", keywords: "erase object photo cleanup tool free", badge: "Free", icon: "fa-sparkles", desc: "Simple AI utility to erase unwanted parts.", link: "https://www.magiceraser.io" },
-
-            // Video & Audio (56-80)
-            { name: "ElevenLabs", cat: "video", type: "free", keywords: "audio voice text to speech speech to text free", badge: "Free", icon: "fa-microphone", desc: "Text-to-speech with generous free tier.", link: "https://elevenlabs.io" },
-            { name: "Runway ML (Gen-2)", cat: "video", type: "paid", keywords: "video cinematic generate motion text to video paid", badge: "Paid / Pro", icon: "fa-video", desc: "Multimodal AI for cinematic video generation.", link: "https://runwayml.com" },
-            { name: "Pika Labs", cat: "video", type: "free", keywords: "animation video generate image to video free", badge: "Free", icon: "fa-film", desc: "Idea-to-video platform to animate images.", link: "https://pika.art" },
-            { name: "Synthesia", cat: "video", type: "paid", keywords: "avatar video presentation digital human paid", badge: "Paid / Pro", icon: "fa-user-tie", desc: "AI video generation platform featuring avatars.", link: "https://synthesia.io" },
-            { name: "Descript", cat: "video", type: "free", keywords: "audio video edit text editor podcast free", badge: "Free", icon: "fa-scissors", desc: "Video and audio editor with free transcription.", link: "https://descript.com" },
-            { name: "Kling AI", cat: "video", type: "free", keywords: "video motion simulation cinematic generation free", badge: "Free", icon: "fa-video", desc: "Advanced video generation with free daily tries.", link: "https://klingai.com" },
-            { name: "Sora (OpenAI)", cat: "video", type: "paid", keywords: "video cinematic text to video high definition paid", badge: "Paid / Pro", icon: "fa-clapperboard", desc: "Text-to-video model for cinematic scenes.", link: "https://openai.com/sora" },
-            { name: "Lumen5", cat: "video", type: "paid", keywords: "article to video marketing clip social media paid", badge: "Paid / Pro", icon: "fa-sliders", desc: "Video platform turning articles into clips.", link: "https://lumen5.com" },
-            { name: "Mubert", cat: "video", type: "free", keywords: "music soundtrack audio royalty free creator free", badge: "Free", icon: "fa-music", desc: "AI soundtrack platform with free options.", link: "https://mubert.com" },
-            { name: "Soundful", cat: "video", type: "free", keywords: "audio music background track generator free", badge: "Free", icon: "fa-headphones", desc: "Custom music generator with free monthly tracks.", link: "https://soundful.com" },
-            { name: "HeyGen", cat: "video", type: "paid", keywords: "video avatar translation video generator paid", badge: "Paid / Pro", icon: "fa-person-chalkboard", desc: "AI video platform for spokespersons.", link: "https://www.heygen.com" },
-            { name: "InVideo AI", cat: "video", type: "free", keywords: "text to video generator youtube editor free", badge: "Free", icon: "fa-clapperboard", desc: "Turn prompts into edited videos with free exports.", link: "https://invideo.io" },
-            { name: "Wondershare Filmora AI", cat: "video", type: "paid", keywords: "video editor ai tools copilot paid", badge: "Paid / Pro", icon: "fa-video", desc: "Video editing software packed with AI features.", link: "https://filmora.wondershare.com" },
-            { name: "CapCut AI", cat: "video", type: "free", keywords: "video editor caption generator effects free", badge: "Free", icon: "fa-scissors", desc: "Popular video editor with free auto captions.", link: "https://www.capcut.com" },
-            { name: "Veed.io", cat: "video", type: "free", keywords: "subtitles video editor transcribe online free", badge: "Free", icon: "fa-closed-captioning", desc: "Online video editor with automated subtitles.", link: "https://www.veed.io" },
-            { name: "Wavve", cat: "video", type: "paid", keywords: "audio waveform podcast video social media paid", badge: "Paid / Pro", icon: "fa-wave-square", desc: "Turn audio files into social videos.", link: "https://wavve.co" },
-            { name: "Murf AI", cat: "video", type: "paid", keywords: "voiceover text to speech studio voice paid", badge: "Paid / Pro", icon: "fa-microphone-lines", desc: "Versatile AI voice generator.", link: "https://murf.ai" },
-            { name: "Play.ht", cat: "video", type: "paid", keywords: "text to speech audio generator voice paid", badge: "Paid / Pro", icon: "fa-volume-high", desc: "Convert text to realistic speech.", link: "https://play.ht" },
-            { name: "Lovo AI", cat: "video", type: "paid", keywords: "voice generator text to speech cloning paid", badge: "Paid / Pro", icon: "fa-podcast", desc: "AI voice generator and cloning platform.", link: "https://lovo.ai" },
-            { name: "Resemble AI", cat: "video", type: "paid", keywords: "voice cloning speech generation audio paid", badge: "Paid / Pro", icon: "fa-clone", desc: "Secure voice cloning toolkit.", link: "https://www.resemble.ai" },
-            { name: "Suno AI", cat: "video", type: "free", keywords: "song generator music AI track lyrics free", badge: "Free", icon: "fa-guitar", desc: "Generate complete songs with free daily credits.", link: "https://suno.com" },
-            { name: "Udio", cat: "video", type: "free", keywords: "music creation song generator ai audio free", badge: "Free", icon: "fa-compact-disc", desc: "AI-powered music platform with free tier.", link: "https://www.udio.com" },
-            { name: "LALAL.AI", cat: "video", type: "free", keywords: "stem splitter vocal remover music isolate free", badge: "Free", icon: "fa-music", desc: "Extract vocals with free preview.", link: "https://www.lalal.ai" },
-            { name: "Adobe Podcast AI", cat: "video", type: "free", keywords: "enhance speech audio clean mic noise free", badge: "Free", icon: "fa-podcast", desc: "Enhance voice recordings to studio quality for free.", link: "https://podcast.adobe.com" },
-            { name: "Clipchamp", cat: "video", type: "free", keywords: "microsoft video editor creator template free", badge: "Free", icon: "fa-play", desc: "Microsoft's free built-in video editor.", link: "https://clipchamp.com" },
-
-            // Code & Dev (81-95)
-            { name: "GitHub Copilot", cat: "code", type: "paid", keywords: "code programming developer autocomplete bug fix paid", badge: "Paid / Pro", icon: "fa-code", desc: "AI-powered pair programmer.", link: "https://github.com/features/copilot" },
-            { name: "Hugging Face", cat: "code", type: "free", keywords: "model dataset machine learning open source code free", badge: "Free", icon: "fa-face-smile", desc: "AI community hub hosting open models.", link: "https://huggingface.co" },
-            { name: "Blackbox AI", cat: "code", type: "free", keywords: "code extract programming task solver free", badge: "Free", icon: "fa-terminal", desc: "Coding assistant with a robust free tier.", link: "https://blackbox.ai" },
-            { name: "Tabnine", cat: "code", type: "free", keywords: "code completion privacy developer tool free", badge: "Free", icon: "fa-laptop-code", desc: "AI code completion with free basic plan.", link: "https://tabnine.com" },
-            { name: "Replit AI", cat: "code", type: "free", keywords: "ide cloud programming collaborative ai free", badge: "Free", icon: "fa-cloud", desc: "Cloud collaborative IDE with free AI.", link: "https://replit.com" },
-            { name: "Codeium", cat: "code", type: "free", keywords: "free code acceleration programming tool free", badge: "Free", icon: "fa-code", desc: "100% free AI code acceleration tool.", link: "https://codeium.com" },
-            { name: "Sourcegraph Cody", cat: "code", type: "free", keywords: "codebase analysis enterprise developer assistant free", badge: "Free", icon: "fa-cubes", desc: "AI coding assistant with free individual tier.", link: "https://sourcegraph.com/cody" },
-            { name: "Bito AI", cat: "code", type: "free", keywords: "unit test code review explain security free", badge: "Free", icon: "fa-robot", desc: "Developer assistant with free explanations.", link: "https://bito.ai" },
-            { name: "Cursor AI", cat: "code", type: "free", keywords: "code editor ai IDE programming free", badge: "Free", icon: "fa-terminal", desc: "AI-first code editor with free trial.", link: "https://www.cursor.com" },
-            { name: "Amazon CodeWhisperer", cat: "code", type: "free", keywords: "aws code generator developer security free", badge: "Free", icon: "fa-aws", desc: "Free coding companion for developers.", link: "https://aws.amazon.com/codewhisperer" },
-            { name: "Phind", cat: "code", type: "free", keywords: "search engine developer coding answers free", badge: "Free", icon: "fa-magnifying-glass-code", desc: "AI search engine optimized for developers.", link: "https://www.phind.com" },
-            { name: "v0 by Vercel", cat: "code", type: "free", keywords: "react UI component generator tailwind web free", badge: "Free", icon: "fa-window-maximize", desc: "Generative UI system with free generation credits.", link: "https://v0.dev" },
-            { name: "CodiumAI", cat: "code", type: "free", keywords: "test generation code quality testing free", badge: "Free", icon: "fa-vial", desc: "Generate meaningful tests automatically.", link: "https://www.codium.ai" },
-            { name: "Supermaven", cat: "code", type: "free", keywords: "fast code completion autocomplete ai free", badge: "Free", icon: "fa-bolt-lightning", desc: "Fast AI code completion with free plan.", link: "https://supermaven.com" },
-            { name: "Sweep AI", cat: "code", type: "paid", keywords: "junior developer bug fix github issue paid", badge: "Paid / Pro", icon: "fa-broom", desc: "AI junior developer turning issues into PRs.", link: "https://sweep.dev" },
-
-            // Utilities & Web Tools (96-105)
-            { name: "Google", cat: "utility", type: "free", keywords: "search engine web utility browser internet free", badge: "Free", icon: "fa-globe", desc: "World's leading search engine platform.", link: "https://google.com" },
-            { name: "GitHub", cat: "utility", type: "free", keywords: "repository version control code host git free", badge: "Free", icon: "fa-brands fa-github", desc: "Hosting platform for software development.", link: "https://github.com" },
-            { name: "H2O.ai", cat: "utility", type: "free", keywords: "data science machine learning predictive model free", badge: "Free", icon: "fa-chart-bar", desc: "Enterprise machine learning platform.", link: "https://h2o.ai" },
-            { name: "DataRobot", cat: "utility", type: "paid", keywords: "analytics data automation lifecycle model paid", badge: "Paid / Pro", icon: "fa-database", desc: "AI platform automating data analytics.", link: "https://datarobot.com" },
-            { name: "Uizard", cat: "utility", type: "free", keywords: "ui design sketch wireframe prototype mockup free", badge: "Free", icon: "fa-pen-ruler", desc: "AI tool converting wireframes into UI mockups.", link: "https://uizard.io" },
-            { name: "Framer AI", cat: "utility", type: "free", keywords: "website design builder prompt publish free", badge: "Free", icon: "fa-window-maximize", desc: "Design and publish websites with free plans.", link: "https://framer.com" },
-            { name: "Galileo AI", cat: "utility", type: "paid", keywords: "ui ux generative screen design prototype paid", badge: "Paid / Pro", icon: "fa-mobile-screen", desc: "Generative UI tool creating interface designs.", link: "https://usegalileo.ai" },
-            { name: "MDN Web Docs", cat: "utility", type: "free", keywords: "web developer documentation html css js free", badge: "Free", icon: "fa-book", desc: "Free web developer documentation.", link: "https://developer.mozilla.org" },
-            { name: "Stack Overflow", cat: "utility", type: "free", keywords: "programming question answer community developer free", badge: "Free", icon: "fa-stack-overflow", desc: "Free public developer knowledge platform.", link: "https://stackoverflow.com" },
-            { name: "Vercel", cat: "utility", type: "free", keywords: "deploy host frontend web application free", badge: "Free", icon: "fa-triangle-exclamation", desc: "Platform for frontend frameworks with free tier.", link: "https://vercel.com" }
-        ];
-
-        let currentCat = 'all';
-        let currentType = 'all';
-
-        function liveSearch() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            const grid = document.getElementById('toolsGrid');
-            grid.innerHTML = '';
-
-            const filtered = toolsData.filter(tool => {
-                const matchCat = currentCat === 'all' || tool.cat === currentCat;
-                const matchType = currentType === 'all' || tool.type === currentType;
-                const matchSearch = tool.name.toLowerCase().includes(query) || 
-                                    tool.desc.toLowerCase().includes(query) || 
-                                    tool.badge.toLowerCase().includes(query) ||
-                                    tool.keywords.toLowerCase().includes(query);
-                return matchCat && matchType && matchSearch;
-            });
-
-            document.getElementById('toolCount').innerText = filtered.length;
-
-            if (filtered.length === 0) {
-                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #64748B; padding: 20px; background: #FFFFFF; border-radius: 10px; border: 1px solid #E2E8F0;">
-                    <strong>No tools found</strong>
-                    <p style="font-size: 10px; margin-top: 3px;">Try changing filters or search terms.</p>
-                </div>`;
-                return;
-            }
-
-            filtered.forEach(tool => {
-                const card = document.createElement('div');
-                card.className = "tool-card";
-                const badgeClass = tool.type === 'free' ? 'tool-badge-free' : 'tool-badge-paid';
-                card.innerHTML = `
-                    <div>
-                        <div class="tool-header">
-                            <div class="tool-title-wrapper">
-                                <div class="tool-icon"><i class="fa-solid ${tool.icon}"></i></div>
-                                <h3>${tool.name}</h3>
-                            </div>
-                            <span class="${badgeClass}">${tool.badge}</span>
-                        </div>
-                        <p>${tool.desc}</p>
-                    </div>
-                    <a href="${tool.link}" target="_blank" class="tool-link">Launch Tool &rarr;</a>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function setCategory(cat, btn) {
-            currentCat = cat;
-            document.querySelectorAll('.filter-row .cat-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            liveSearch();
-        }
-
-        function setTypeFilter(type, btn) {
-            currentType = type;
-            document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            liveSearch();
-        }
-    </script>
-</body>
-</html>
+            { name: "Wordtune", cat: "writing", type: "free", keywords: "rewrite sentence paragraph tone text free", badge: "Free", 
