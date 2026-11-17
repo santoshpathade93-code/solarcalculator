@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Sadhan & ToolSub24 - Ultimate Free & Paid AI Tools Directory</title>
     
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="tmOFY1EFTm6yLBZ-50W0Dm1cuP7t3jXjEHh1p2cfiU4" />
+
     <!-- Microsoft Clarity Tracking Code -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -210,7 +213,7 @@
             }
 
             grid.innerHTML = filtered.map(tool => `
-                <div class="tool-card">
+                <button class="tool-card" onclick="window.open('${tool.link}', '_blank')" style="border: none; background: #FFFFFF; width: 100%; text-align: left; cursor: pointer;">
                     <div>
                         <div class="tool-header">
                             <div class="tool-title-wrapper">
@@ -221,8 +224,8 @@
                         </div>
                         <p>${tool.desc}</p>
                     </div>
-                    <a href="${tool.link}" target="_blank" class="tool-link">Visit Tool <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 8px;"></i></a>
-                </div>
+                    <span class="tool-link" style="display: block; width: 100%; background: #D97706; color: #FFFFFF; font-weight: 700; font-size: 9px; text-decoration: none; padding: 5px; border-radius: 5px; text-align: center;">Visit Tool <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 8px;"></i></span>
+                </button>
             `).join('');
         }
     </script>
