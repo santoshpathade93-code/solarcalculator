@@ -87,6 +87,8 @@
     header { background:#FFF; border-bottom:1px solid var(--border); padding:12px 18px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; box-shadow:0 1px 3px rgba(0,0,0,.03); }
     .logo { font-size:16px; font-weight:900; color:var(--orange); text-decoration:none; display:flex; align-items:center; gap:6px; }
     .logo span { color:var(--dark); }
+    .header-actions { display:flex; align-items:center; gap:8px; }
+    .language-select { background:#FFF; color:#0F172A; border:1px solid #CBD5E1; border-radius:7px; padding:5px 7px; font-size:10px; font-weight:700; cursor:pointer; }
     .badge { background:#FEF3C7; color:#B45309; border:1px solid #FCD34D; padding:3px 10px; border-radius:20px; font-size:10px; font-weight:700; }
     main { width:100%; max-width:1050px; margin:0 auto; padding:20px 12px; flex:1; }
     .hero { background:var(--card); border:1px solid var(--border); padding:25px 16px; text-align:center; border-radius:14px; margin-bottom:20px; box-shadow:0 2px 4px rgba(0,0,0,.02); }
@@ -140,14 +142,22 @@
 <body>
   <header>
     <a href="https://toolsub24.in/" class="logo" aria-label="AI Sadhan ToolSub24 home"><i class="fa-solid fa-cube" aria-hidden="true"></i> AI Sadhan <span>| ToolSub24</span></a>
-    <span class="badge"><i class="fa-solid fa-rocket" aria-hidden="true"></i> Live</span>
+    <div class="header-actions">
+      <label for="languageSwitcher" class="sr-only">Choose language</label>
+      <select id="languageSwitcher" class="language-select" aria-label="Choose language">
+        <option value="en">English</option>
+        <option value="mr">मराठी</option>
+        <option value="hinglish">Hinglish</option>
+      </select>
+      <span class="badge"><i class="fa-solid fa-rocket" aria-hidden="true"></i> <span id="liveBadgeText">Live</span></span>
+    </div>
   </header>
 
   <main>
     <section class="hero" aria-labelledby="main-heading">
-      <div class="hero-tag">✨ Clean Minimalist AI Hub</div>
+      <div class="hero-tag" id="hero-tag">✨ Clean Minimalist AI Hub</div>
       <h1 id="main-heading">Explore <span>AI Tools</span> &amp; Prompts</h1>
-      <p>Discover useful free and paid AI tools for writing, image creation, video, coding, search and everyday productivity.</p>
+      <p id="hero-description">Discover useful free and paid AI tools for writing, image creation, video, coding, search and everyday productivity.</p>
       <div class="search-box" role="search">
         <label for="searchInput" class="sr-only">Search AI tools</label>
         <input type="search" id="searchInput" placeholder="Search tool or requirement..." autocomplete="off">
@@ -157,24 +167,24 @@
 
     <section class="widget-container" aria-labelledby="optimizer-heading">
       <h2 id="optimizer-heading"><i class="fa-solid fa-wand-magic-sparkles" style="color:#D97706" aria-hidden="true"></i> Universal AI Prompt Optimizer</h2>
-      <p>Type your idea in any language and turn it into a clear, professional prompt template.</p>
+      <p id="optimizer-description">Type your idea in any language and turn it into a clear, professional prompt template.</p>
       <label for="userIdea" class="sr-only">Your idea</label>
       <input type="text" id="userIdea" class="widget-input" placeholder="Type your requirement...">
       <button type="button" class="widget-btn" id="generatePromptButton"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Generate Prompt</button>
       <div id="promptResult" class="widget-result" aria-live="polite">
-        <strong>Optimized AI Prompt:</strong>
+        <strong id="prompt-result-label">Optimized AI Prompt:</strong>
         <span id="promptTextOutput"></span><br>
-        <button type="button" class="copy-btn" id="copyPromptButton"><i class="fa-solid fa-copy" aria-hidden="true"></i> Copy</button>
+        <button type="button" class="copy-btn" id="copyPromptButton"><i class="fa-solid fa-copy" aria-hidden="true"></i> <span id="copy-button-text">Copy</span></button>
       </div>
     </section>
 
     <!-- Adsterra Smartlink_1 | Placement ID: 32367400 -->
     <aside class="smartlink-box" aria-label="Sponsored offer">
       <div class="smartlink-text">
-        <h2><i class="fa-solid fa-fire" style="color:#D97706" aria-hidden="true"></i> Exclusive Bonus AI &amp; Tech Offers</h2>
-        <p>Sponsored quick-access recommendations and technology offers.</p>
+        <h2 id="promo-heading"><i class="fa-solid fa-fire" style="color:#D97706" aria-hidden="true"></i> Exclusive Bonus AI &amp; Tech Offers</h2>
+        <p id="promo-description">Sponsored quick-access recommendations and technology offers.</p>
       </div>
-      <a href="https://arwf.org/4/621eb30e0c63152bc132c08df9619a3e" target="_blank" rel="sponsored noopener noreferrer" class="smartlink-btn">Open Offer <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      <a href="https://arwf.org/4/621eb30e0c63152bc132c08df9619a3e" target="_blank" rel="sponsored noopener noreferrer" class="smartlink-btn"><span id="promo-button-text">Open Offer</span> <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
     </aside>
 
     <div class="type-filters" aria-label="Filter tools by pricing">
@@ -193,7 +203,7 @@
 
     <section aria-labelledby="tools-heading">
       <h2 id="tools-heading" class="section-title">Available AI Tools (<span id="toolCount">14</span>)</h2>
-      <p class="section-desc">Browse a compact, mobile-friendly collection of useful AI and productivity tools.</p>
+      <p id="tools-description" class="section-desc">Browse a compact, mobile-friendly collection of useful AI and productivity tools.</p>
       <!-- These cards are present in the initial HTML so search crawlers can read the main content without waiting for JavaScript. -->
       <div id="toolsGrid" class="tools-grid">
         <a class="tool-card" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><div><div class="tool-header"><div class="tool-title-wrapper"><div class="tool-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></div><h3>ChatGPT</h3></div><span class="tool-badge-free">Free</span></div><p>Conversational AI chatbot with a powerful free tier.</p></div><span class="tool-link">Visit Tool <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></a>
@@ -215,18 +225,18 @@
 
     <section class="seo-copy" aria-labelledby="about-heading">
       <h2 id="about-heading">Find the Right AI Tool for Your Work</h2>
-      <p>AI Sadhan by ToolSub24 is a simple AI tools directory for students, creators, writers, developers and small businesses. Use the filters to find free or paid tools for writing, image creation, video, coding, search and productivity. The collection is updated as useful AI tools are discovered.</p>
+      <p id="about-description">AI Sadhan by ToolSub24 is a simple AI tools directory for students, creators, writers, developers and small businesses. Use the filters to find free or paid tools for writing, image creation, video, coding, search and productivity. The collection is updated as useful AI tools are discovered.</p>
     </section>
 
     <section class="seo-copy" aria-labelledby="blog-heading">
       <h2 id="blog-heading">Latest AI Guides</h2>
-      <p>Read practical guides and comparisons to choose and use AI tools more effectively.</p>
-      <p><a href="https://toolsub24.in/blog/" style="color:#D97706;font-weight:700;text-decoration:none;">Visit the ToolSub24 Blog →</a></p>
+      <p id="blog-description">Read practical guides and comparisons to choose and use AI tools more effectively.</p>
+      <p><a id="blog-link" href="https://toolsub24.in/blog/" style="color:#D97706;font-weight:700;text-decoration:none;">Visit the ToolSub24 Blog →</a></p>
     </section>
   </main>
 
   <footer>
-    <div>&copy; 2026 AI Sadhan &amp; ToolSub24. All rights reserved.</div>
+    <div id="footer-text">&copy; 2026 AI Sadhan &amp; ToolSub24. All rights reserved.</div>
   </footer>
 
   <script>
@@ -304,5 +314,69 @@
 
   <!-- Adsterra SocialBar_1 | Placement ID: 32367401 -->
   <script data-cfasync="false" src="https://bicea.org/14/c25e5088d6f0a7873bd76d14fe80b0b9"></script>
+
+  <script>
+    const languageText = {
+      en: {
+        htmlLang:'en', title:'AI Sadhan | Free & Paid AI Tools Directory - ToolSub24', live:'Live', heroTag:'✨ Clean Minimalist AI Hub', heroTitle:'Explore AI Tools & Prompts', searchPlaceholder:'Search tool or requirement...', search:'Search', promptResult:'Optimized AI Prompt:', copy:'Copy', hero:'Discover useful free and paid AI tools for writing, image creation, video, coding, search and everyday productivity.', optimizer:'Type your idea in any language and turn it into a clear, professional prompt template.', ideaPlaceholder:'Type your requirement...', generate:'Generate Prompt', promptTitle:'Optimized AI Prompt:', copy:'Copy', promo:'Exclusive Bonus AI & Tech Offers', promoDesc:'Sponsored quick-access recommendations and technology offers.', openOffer:'Open Offer', allTools:'All Tools', free:'🟢 Free', paid:'⭐ Paid', all:'All', writing:'✍️ Writing', image:'🎨 Image', video:'🎥 Video', code:'💻 Code', utility:'🛠️ Utilities', toolsDesc:'Browse a compact, mobile-friendly collection of useful AI and productivity tools.', blogDesc:'Read practical guides and comparisons to choose and use AI tools more effectively.', aboutTitle:'Find the Right AI Tool for Your Work', aboutDesc:'AI Sadhan by ToolSub24 is a simple AI tools directory for students, creators, writers, developers and small businesses. Use the filters to find free or paid tools for writing, image creation, video, coding, search and productivity. The collection is updated as useful AI tools are discovered.', latest:'Latest AI Guides', visitBlog:'Visit the ToolSub24 Blog →', footer:'© 2026 AI Sadhan & ToolSub24. All rights reserved.', visit:'Visit Tool', noTools:'No tools found. Try another search or filter.'
+      },
+      mr: {
+        htmlLang:'mr', title:'AI Sadhan | मोफत आणि Paid AI Tools Directory - ToolSub24', live:'लाईव्ह', heroTag:'✨ सोपे आणि उपयुक्त AI Hub', heroTitle:'AI Tools आणि Prompts शोधा', searchPlaceholder:'Tool किंवा गरज शोधा...', search:'Search करा', promptResult:'Optimized AI Prompt:', copy:'Copy करा', hero:'Writing, image, video, coding, search आणि productivity साठी उपयुक्त Free व Paid AI tools शोधा.', optimizer:'तुमची कल्पना कोणत्याही भाषेत लिहा आणि professional prompt तयार करा.', ideaPlaceholder:'तुमची गरज लिहा...', generate:'Prompt तयार करा', promptTitle:'Optimized AI Prompt:', copy:'Copy करा', promo:'Exclusive Bonus AI आणि Tech Offers', promoDesc:'Sponsored quick-access recommendations आणि technology offers.', openOffer:'Offer उघडा', allTools:'सर्व Tools', free:'🟢 Free', paid:'⭐ Paid', all:'सर्व', writing:'✍️ Writing', image:'🎨 Image', video:'🎥 Video', code:'💻 Code', utility:'🛠️ Utilities', toolsDesc:'उपयुक्त AI आणि productivity tools ची mobile-friendly यादी पहा.', blogDesc:'AI tools निवडण्यासाठी practical guides आणि comparisons वाचा.', aboutTitle:'तुमच्या कामासाठी योग्य AI Tool शोधा', aboutDesc:'AI Sadhan by ToolSub24 हे students, creators, writers, developers आणि small businesses साठी सोपे AI tools directory आहे. Writing, image, video, coding, search आणि productivity tools शोधण्यासाठी filters वापरा.', latest:'नवीनतम AI Guides', visitBlog:'ToolSub24 Blog पहा →', footer:'© 2026 AI Sadhan & ToolSub24. सर्व हक्क राखीव.', visit:'Tool उघडा', noTools:'Tool सापडले नाही. दुसरा search किंवा filter वापरा.'
+      },
+      hinglish: {
+        htmlLang:'en', title:'AI Sadhan | Free & Paid AI Tools Directory - ToolSub24', live:'Live', heroTag:'✨ Clean Minimalist AI Hub', heroTitle:'Explore AI Tools & Prompts', searchPlaceholder:'Tool ya requirement search kijiye...', search:'Search Karein', promptResult:'Optimized AI Prompt:', copy:'Copy Karein', hero:'Writing, image, video, coding, search aur productivity ke liye useful Free aur Paid AI tools dhoondhiye.', optimizer:'Apna idea kisi bhi language mein likhiye aur professional prompt banaiye.', ideaPlaceholder:'Apni requirement likhiye...', generate:'Prompt Banaye', promptTitle:'Optimized AI Prompt:', copy:'Copy Karein', promo:'Exclusive Bonus AI aur Tech Offers', promoDesc:'Sponsored quick-access recommendations aur technology offers.', openOffer:'Offer Kholein', allTools:'All Tools', free:'🟢 Free', paid:'⭐ Paid', all:'All', writing:'✍️ Writing', image:'🎨 Image', video:'🎥 Video', code:'💻 Code', utility:'🛠️ Utilities', toolsDesc:'Useful AI aur productivity tools ki mobile-friendly list browse kijiye.', blogDesc:'AI tools choose aur use karne ke liye practical guides aur comparisons padhiye.', aboutTitle:'Apne Kaam ke Liye Sahi AI Tool Chuniye', aboutDesc:'AI Sadhan by ToolSub24 students, creators, writers, developers aur small businesses ke liye simple AI tools directory hai. Writing, image, video, coding, search aur productivity tools ke liye filters use kijiye.', latest:'Latest AI Guides', visitBlog:'ToolSub24 Blog Dekhiye →', footer:'© 2026 AI Sadhan & ToolSub24. All rights reserved.', visit:'Visit Tool', noTools:'Tool nahi mila. Dusra search ya filter try kijiye.'
+      }
+    };
+    const originalToolDescriptions = {};
+    let currentLanguage = localStorage.getItem('toolsub24-language') || 'en';
+    function applyLanguage(lang) {
+      currentLanguage = languageText[lang] ? lang : 'en';
+      localStorage.setItem('toolsub24-language', currentLanguage);
+      const t = languageText[currentLanguage];
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.title;
+      document.getElementById('languageSwitcher').value = currentLanguage;
+      document.getElementById('liveBadgeText').textContent = t.live;
+      document.getElementById('hero-tag').textContent = t.heroTag;
+      document.getElementById('main-heading').innerHTML = t.heroTitle.replace('AI Tools', '<span>AI Tools</span>');
+      document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+      document.getElementById('searchButton').textContent = t.search;
+      document.getElementById('prompt-result-label').textContent = t.promptResult;
+      document.getElementById('copy-button-text').textContent = t.copy;
+      document.getElementById('blog-link').textContent = t.visitBlog;
+      document.getElementById('hero-description').textContent = t.hero;
+      document.getElementById('optimizer-description').textContent = t.optimizer;
+      document.getElementById('userIdea').placeholder = t.ideaPlaceholder;
+      document.getElementById('generatePromptButton').innerHTML = '<i class="fa-solid fa-bolt" aria-hidden="true"></i> ' + t.generate;
+      document.getElementById('promo-heading').innerHTML = '<i class="fa-solid fa-fire" style="color:#D97706" aria-hidden="true"></i> ' + t.promo;
+      document.getElementById('promo-description').textContent = t.promoDesc;
+      document.getElementById('promo-button-text').textContent = t.openOffer;
+      document.getElementById('tools-description').textContent = t.toolsDesc;
+      document.getElementById('blog-description').textContent = t.blogDesc;
+      document.getElementById('about-heading').textContent = t.aboutTitle;
+      document.getElementById('about-description').textContent = t.aboutDesc;
+      document.getElementById('blog-heading').textContent = t.latest;
+      document.querySelector('.type-btn[data-type="all"]').textContent = t.allTools;
+      document.querySelector('.type-btn[data-type="free"]').textContent = t.free;
+      document.querySelector('.type-btn[data-type="paid"]').textContent = t.paid;
+      document.querySelector('.cat-btn[data-category="all"]').textContent = t.all;
+      document.querySelector('.cat-btn[data-category="writing"]').textContent = t.writing;
+      document.querySelector('.cat-btn[data-category="image"]').textContent = t.image;
+      document.querySelector('.cat-btn[data-category="video"]').textContent = t.video;
+      document.querySelector('.cat-btn[data-category="code"]').textContent = t.code;
+      document.querySelector('.cat-btn[data-category="utility"]').textContent = t.utility;
+      document.getElementById('footer-text').textContent = t.footer;
+      renderTools();
+    }
+    document.getElementById('languageSwitcher').addEventListener('change', e => applyLanguage(e.target.value));
+    const oldRenderTools = renderTools;
+    renderTools = function() {
+      oldRenderTools();
+      const t = languageText[currentLanguage];
+      document.querySelectorAll('.tool-link').forEach(el => { const icon = el.querySelector('i'); el.textContent = t.visit + ' '; if (icon) el.appendChild(icon); });
+      const no = document.querySelector('.no-results'); if (no) no.textContent = t.noTools;
+    };
+    applyLanguage(currentLanguage);
+  </script>
 </body>
 </html>
