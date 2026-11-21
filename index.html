@@ -88,7 +88,10 @@
     .logo { font-size:16px; font-weight:900; color:var(--orange); text-decoration:none; display:flex; align-items:center; gap:6px; }
     .logo span { color:var(--dark); }
     .header-actions { display:flex; align-items:center; gap:8px; }
-    .language-select { background:#FFF; color:#0F172A; border:1px solid #CBD5E1; border-radius:7px; padding:5px 7px; font-size:10px; font-weight:700; cursor:pointer; }
+    .language-switcher { display:flex; align-items:center; gap:2px; background:#FFF; border:1px solid #CBD5E1; border-radius:7px; padding:2px; }
+    .language-btn { border:0; background:transparent; color:#475569; border-radius:5px; padding:5px 7px; min-height:28px; font-size:10px; font-weight:700; cursor:pointer; touch-action:manipulation; }
+    .language-btn:hover,.language-btn:focus-visible { outline:2px solid #F59E0B; outline-offset:1px; }
+    .language-btn.active { background:#0F172A; color:#FFF; }
     .badge { background:#FEF3C7; color:#B45309; border:1px solid #FCD34D; padding:3px 10px; border-radius:20px; font-size:10px; font-weight:700; }
     main { width:100%; max-width:1050px; margin:0 auto; padding:20px 12px; flex:1; }
     .hero { background:var(--card); border:1px solid var(--border); padding:25px 16px; text-align:center; border-radius:14px; margin-bottom:20px; box-shadow:0 2px 4px rgba(0,0,0,.02); }
@@ -143,12 +146,11 @@
   <header>
     <a href="https://toolsub24.in/" class="logo" aria-label="AI Sadhan ToolSub24 home"><i class="fa-solid fa-cube" aria-hidden="true"></i> AI Sadhan <span>| ToolSub24</span></a>
     <div class="header-actions">
-      <label for="languageSwitcher" class="sr-only">Choose language</label>
-      <select id="languageSwitcher" class="language-select" aria-label="Choose language">
-        <option value="en">English</option>
-        <option value="mr">मराठी</option>
-        <option value="hinglish">Hinglish</option>
-      </select>
+      <div class="language-switcher" role="group" aria-label="Choose language">
+        <button type="button" class="language-btn" data-lang="en">English</button>
+        <button type="button" class="language-btn" data-lang="mr">मराठी</button>
+        <button type="button" class="language-btn" data-lang="hinglish">Hinglish</button>
+      </div>
       <span class="badge"><i class="fa-solid fa-rocket" aria-hidden="true"></i> <span id="liveBadgeText">Live</span></span>
     </div>
   </header>
@@ -335,7 +337,7 @@
       const t = languageText[currentLanguage];
       document.documentElement.lang = t.htmlLang;
       document.title = t.title;
-      document.getElementById('languageSwitcher').value = currentLanguage;
+      document.querySelectorAll('.language-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === currentLanguage));
       document.getElementById('liveBadgeText').textContent = t.live;
       document.getElementById('hero-tag').textContent = t.heroTag;
       document.getElementById('main-heading').innerHTML = t.heroTitle.replace('AI Tools', '<span>AI Tools</span>');
@@ -368,7 +370,7 @@
       document.getElementById('footer-text').textContent = t.footer;
       renderTools();
     }
-    document.getElementById('languageSwitcher').addEventListener('change', e => applyLanguage(e.target.value));
+    document.querySelectorAll('.language-btn').forEach(btn => btn.addEventListener('click', () => applyLanguage(btn.dataset.lang)));
     const oldRenderTools = renderTools;
     renderTools = function() {
       oldRenderTools();
